@@ -5,7 +5,7 @@ List of Projects
 ================
 [1] Binary Classification
 -------------------------
- 1. Insurance_Policy_Classification TF ... Implement TF CNN to determine whether a client will buy a new insurance policy or not.
+ 1. Insurance_Policy_Classification TF ... Implement TF NN to determine whether a client will buy a new insurance policy or not.
  2. Insurance_Policy_Classification    ... Implement Logistic Regression, Random Forests, and SVMs to determine whether a client will buy a new inusrance policy or not.
  
  [2] Multi-class Classification
