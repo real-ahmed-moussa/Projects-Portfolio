@@ -12,8 +12,8 @@ List of Projects
  ------------------------------
  1. Beans_Multiclass_Classification ... Implement Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and Artifical Neural Networks to determine the type of beans based on certain geometric characteristics.
 
- [3] TFX Pipeline Demonstration with Airflow Integration
- ------------------------------------------------------
+ [3] TFX Pipeline with Airflow Integration
+ -----------------------------------------
 This project demonstrates the execution of a TensorFlow Extended (TFX) pipeline on a local machine, with Apache Airflow used for triggering and monitoring the pipeline. The base pipeline code and training architecture were adapted from Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).
 
 Key Enhancements & Features
@@ -29,8 +29,8 @@ Future Improvements
 
 This project serves as a foundational demonstration of MLOps principles, showcasing automated model lifecycle management and workflow orchestration with TFX and Airflow.
 
- [4] TFX Pipeline Demonstration with Kubeflow Integration
- ------------------------------------------------------
+ [4] TFX Pipeline with Kubeflow Integration
+ ------------------------------------------
 This project demonstrates the execution of a TensorFlow Extended (TFX) pipeline using Kubeflow Pipelines on a Minikube cluster running on Docker. The pipeline was deployed and managed with kubectl, ensuring a containerized and scalable machine learning workflow. The base pipeline code and training architecture were adapted from Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).
 
 Key Enhancements & Features
@@ -48,3 +48,13 @@ Future Improvements
 2. Exploring cloud-based deployments for improved scalability and resource efficiency.
 
 This project serves as a comprehensive demonstration of MLOps principles, showcasing automated model lifecycle management, pipeline orchestration, and persistent storage handling with TFX and Kubeflow Pipelines.
+
+ [5] Video Classification using ConvLSTM2D
+ -----------------------------------------
+This project implements a **video classification model** using **ConvLSTM2D**, designed to analyze sequences of video frames for multi-class classification. It combines convolutional layers for spatial feature extraction with LSTM units to capture temporal dependencies across frames. The project focuses on:
+
+1. Processing short video clips (frame sequences) into class predictions.
+2. Using **MaxPooling** layers for spatial downsampling.
+3. Preprocessing raw videos by extracting frames and organizing them into sequences for model input.
+
+This work highlights how deep learning can handle both **spatial and temporal data**, making it suitable for applications like action recognition, activity monitoring, and video categorization.
