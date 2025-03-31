@@ -46,7 +46,7 @@ Applied **Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and 
 ## ⚡️ **Technologies Used**
 | Technology          | Purpose                              |
 |-------------------- |--------------------------------------|
-| `scikit-learn`      | Model development                    |
+| `R Libraries`       | Model development                    |
 | `pandas`            | Data preprocessing & analysis        |
 | `NumPy`             | Data manipulation                    |
 
