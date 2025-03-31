@@ -1,60 +1,143 @@
 # Projects-Portfolio
+
 Portfolio of my projects to date. Only projects with no confidentiality requirements are posted.
 
-List of Projects
-================
-[1] Binary Classification
--------------------------
- 1. Insurance_Policy_Classification TF ... Implement TF NN to determine whether a client will buy a new insurance policy or not.
- 2. Insurance_Policy_Classification    ... Implement Logistic Regression, Random Forests, and SVMs to determine whether a client will buy a new inusrance policy or not.
- 
- [2] Multi-class Classification
- ------------------------------
- 1. Beans_Multiclass_Classification ... Implement Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and Artifical Neural Networks to determine the type of beans based on certain geometric characteristics.
+---
 
- [3] TFX Pipeline with Airflow Integration
- -----------------------------------------
-This project demonstrates the execution of a TensorFlow Extended (TFX) pipeline on a local machine, with Apache Airflow used for triggering and monitoring the pipeline. The base pipeline code and training architecture were adapted from Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).
+## 📚 **List of Projects**
 
-Key Enhancements & Features
-1. Hyperparameter Tuning: Introduced a new Tuner component to optimize the model's performance.
-2. Dataset & Application: A different public dataset was used for a regression task, shifting the focus to pipeline execution rather than model accuracy.
-3. Dependency Conflict Resolution: Addressed a conflict between TFX and Apache Airflow, which prevented both from being installed in the same environment.
-    1. Implemented separate virtual environments, isolating TFX while allowing Airflow to manage and trigger the pipeline.
-    2. Limitation: In the Airflow web UI, the TFX pipeline appears as a single task, allowing for scheduling and monitoring but lacking component-level visibility.
+### [1] Binary Classification
 
-Future Improvements
-1. Enhancing Airflow's interface to improve visibility of pipeline component dependencies.
-2. Exploring alternative orchestration strategies for better integration between TFX and Apache Airflow.
+#### 1. Insurance Policy Classification (TF)
+This project implements a **TensorFlow Neural Network (TF NN)** to determine whether a client will purchase a new insurance policy based on historical data.
 
-This project serves as a foundational demonstration of MLOps principles, showcasing automated model lifecycle management and workflow orchestration with TFX and Airflow.
+---
 
- [4] TFX Pipeline with Kubeflow Integration
- ------------------------------------------
-This project demonstrates the execution of a TensorFlow Extended (TFX) pipeline using Kubeflow Pipelines on a Minikube cluster running on Docker. The pipeline was deployed and managed with kubectl, ensuring a containerized and scalable machine learning workflow. The base pipeline code and training architecture were adapted from Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `TensorFlow`        | Neural network model development    |
+| `NumPy`             | Data manipulation                   |
+| `pandas`            | Data preprocessing & analysis       |
 
-Key Enhancements & Features
-1. Hyperparameter Tuning: Integrated a Tuner component to optimize model performance.
-2. Dataset & Application: Utilized a different public dataset for a regression task, focusing on pipeline execution rather than model accuracy.
-3. Kubeflow on Minikube (Docker): The pipeline was deployed on a Minikube cluster running on Docker, enabling seamless local testing and orchestration.
-4. Persistent Storage Management:
-    1. Implemented Persistent Volumes (PVs), Persistent Volume Claims (PVCs), and Persistent Volume Mounts to handle data storage and access efficiently.
-    2. Ensured data persistence across pipeline runs, facilitating reproducibility.
-5. Pipeline Deployment with YAML Configuration:
-    1. Defined and executed the Kubeflow pipeline using a YAML configuration file, streamlining deployment and automation.
+---
 
-Future Improvements
-1. Enhancing pipeline visibility and monitoring within the Kubeflow UI.
-2. Exploring cloud-based deployments for improved scalability and resource efficiency.
+#### 2. Insurance Policy Classification (ML Models)
+Implemented and compared **Logistic Regression, Random Forests, and SVMs** to predict the likelihood of a client purchasing a new insurance policy.
 
-This project serves as a comprehensive demonstration of MLOps principles, showcasing automated model lifecycle management, pipeline orchestration, and persistent storage handling with TFX and Kubeflow Pipelines.
+---
 
- [5] Video Classification using ConvLSTM2D
- -----------------------------------------
-This project implements a **video classification model** using **ConvLSTM2D**, designed to analyze sequences of video frames for multi-class classification. It combines convolutional layers for spatial feature extraction with LSTM units to capture temporal dependencies across frames. The project focuses on:
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `scikit-learn`      | Model development                    |
+| `pandas`            | Data preprocessing & analysis        |
+| `NumPy`             | Data manipulation                    |
 
-1. Processing short video clips (frame sequences) into class predictions.
-2. Using **MaxPooling** layers for spatial downsampling.
-3. Preprocessing raw videos by extracting frames and organizing them into sequences for model input.
+---
 
-This work highlights how deep learning can handle both **spatial and temporal data**, making it suitable for applications like action recognition, activity monitoring, and video categorization.
+### [2] Multi-class Classification
+
+#### 1. Beans Multiclass Classification
+Applied **Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and Artificial Neural Networks (ANNs)** to classify bean types based on geometric characteristics.
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `scikit-learn`      | Model development                    |
+| `pandas`            | Data preprocessing & analysis        |
+| `NumPy`             | Data manipulation                    |
+
+---
+
+### [3] TFX Pipeline with Airflow Integration
+
+This project demonstrates the execution of a **TensorFlow Extended (TFX) pipeline** on a local machine, with **Apache Airflow** used for triggering and monitoring the pipeline. The base pipeline code and training architecture were adapted from *Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).*
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `TensorFlow`        | Model training & transformation      |
+| `Apache Airflow`    | Pipeline orchestration               |
+| `Docker`            | Containerized execution              |
+| `Python`            | Custom pipeline components           |
+
+---
+
+### [4] TFX Pipeline with Kubeflow Integration
+
+This project demonstrates the execution of a **TensorFlow Extended (TFX) pipeline** using **Kubeflow Pipelines** on a Minikube cluster running on Docker. The base pipeline code and training architecture were adapted from *Building Machine Learning Pipelines: Automating Model Lifecycles with TensorFlow (Hapke and Nelson, 2020).*
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `TensorFlow`        | Model training & transformation      |
+| `Kubeflow`          | Pipeline orchestration               |
+| `Minikube`          | Local Kubernetes cluster management  |
+| `Docker`            | Containerized execution              |
+| `YAML`              | Pipeline configuration               |
+
+---
+
+### [5] Video Classification using ConvLSTM2D
+
+This project implements a **video classification model** using **ConvLSTM2D** to analyze sequences of video frames for multi-class classification. It combines convolutional layers for spatial feature extraction with LSTM units to capture temporal dependencies.
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `TensorFlow`        | Model development                    |
+| `OpenCV`            | Video frame extraction               |
+| `NumPy`             | Data manipulation                    |
+
+---
+
+### [6] MLOps Churn Prediction Pipeline
+
+This project demonstrates an end-to-end **MLOps pipeline** for customer churn prediction using a real-world telecom dataset. It integrates **CI/CD, drift detection, model retraining, versioning, and model performance tracking** with **MLflow**.
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology          | Purpose                              |
+|-------------------- |--------------------------------------|
+| `scikit-learn`      | Model development                    |
+| `EvidentlyAI`       | Drift detection & monitoring         |
+| `MLflow`            | Model tracking & performance logging |
+| `FastAPI`           | API for inference                    |
+| `Docker`            | Containerization                     |
+| `GitHub Actions`    | CI/CD automation                     |
+| `joblib`            | Model serialization and versioning   |
+| `pandas`            | Data preprocessing & transformation  |
+
+---
+
+## 🏗️ **Pipeline Workflow**
+1. **Model Training & Versioning:**
+   - Train a **Logistic Regression Model** on telecom data.
+   - Save models with versioned names (`churn_pred_model_v1.pkl`).
+   - **Track model metrics and parameters with MLflow.**
+
+2. **API Deployment:**
+   - Serve predictions via `app.py` using **FastAPI**.
+   - API listens on `http://localhost:8000/predict`.
+
+3. **Drift Detection & Monitoring:**
+   - **EvidentlyAI** compares incoming data with reference data.
+   - Drift detection triggers retraining when performance drops.
+   - Retrained models are versioned and tracked via MLflow.
+
+4. **CI/CD with GitHub Actions:**
+   - Automate Docker builds and model versioning.
+   - Push images to Docker Hub.
+   - Deploy updated services when drift is detected.
+
+---
