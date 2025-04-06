@@ -16,9 +16,9 @@ This project implements a **TensorFlow Neural Network (TF NN)** to determine whe
 ## ⚡️ **Technologies Used**
 | Technology          | Purpose                              |
 |-------------------- |--------------------------------------|
-| `TensorFlow`        | Neural network model development    |
-| `NumPy`             | Data manipulation                   |
-| `pandas`            | Data preprocessing & analysis       |
+| `TensorFlow`        | Neural network model development     |
+| `NumPy`             | Data manipulation                    |
+| `pandas`            | Data preprocessing & analysis        |
 
 ---
 
