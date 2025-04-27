@@ -8,8 +8,12 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
 
 ## [1] Hyperparameter Optimizer (Python Package)
  A lightweight and flexible Python library for hyperparameter tuning using metaheuristic techniques. Currently, the library includes Particle Swarm Optimization (PSO) only.
- Install from PyPI: pip install hyperparameter-optimizer
- Compatible with: **(1) Scikit-Learn; (2) LightGBM; (3) XGBoost; and (4)CatBoost**
+
+###  Install from PyPI: 
+    pip install hyperparameter-optimizer
+
+### Compatible with: 
+ **(1) Scikit-Learn; (2) LightGBM; (3) XGBoost; and (4)CatBoost**
 
 ### ⚡️ **Technologies Used**
 | Technology          | Purpose                               |
