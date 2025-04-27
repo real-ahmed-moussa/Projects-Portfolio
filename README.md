@@ -130,8 +130,7 @@ Hyperparameters for each model were automatically tuned using Particle Swarm Opt
 | `pandas`                    | Data preprocessing & transformation                         |
 
 🔹 Notes
-
-   Particle Swarm Optimization (PSO) is a nature-inspired global optimization algorithm that efficiently explores the hyperparameter space, outperforming traditional grid and random search strategies in both convergence speed and solution quality.
+    Particle Swarm Optimization (PSO) is a nature-inspired global optimization algorithm that efficiently explores the hyperparameter space, outperforming traditional grid and random search strategies in both convergence speed and solution quality.
 ---
 
 ## [8] MLOps Churn Prediction Pipeline
