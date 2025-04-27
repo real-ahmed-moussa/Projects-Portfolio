@@ -12,8 +12,13 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
 ###  Install from PyPI: 
     pip install hyperparameter-optimizer
 
-### Compatible with: 
- **(1) Scikit-Learn; (2) LightGBM; (3) XGBoost; and (4)CatBoost**
+### Compatible with:
+| Technology          |
+|-------------------- |
+| `scikit-learn`      |
+| `LightGBM`          |
+| `XGBoost`           |
+| `CatBoost`          |
 
 ### ⚡️ **Technologies Used**
 | Technology          | Purpose                               |
