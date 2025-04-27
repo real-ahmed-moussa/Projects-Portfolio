@@ -100,7 +100,47 @@ This project implements a **video classification model** using **ConvLSTM2D** to
 
 ---
 
-### [6] MLOps Churn Prediction Pipeline
+### [6] Tree-Based Models Hyperparameter Optimization
+
+This project involves the development and optimization of tree-based machine learning models for classification tasks. The models include:
+
+    Decision Trees
+
+    Random Forests
+
+    AdaBoost
+
+    Gradient Boosting
+
+    LightGBM
+
+    XGBoost
+
+    CatBoost
+
+Hyperparameters for each model were automatically tuned using Particle Swarm Optimization (PSO) via the hyperparameter-optimizer library. This approach significantly improved model accuracy, robustness, and generalization compared to manual or grid search methods.
+
+---
+
+## ⚡️ **Technologies Used**
+| Technology                  | Purpose                                                     |
+|-----------------------------|-------------------------------------------------------------|
+| `scikit-learn`              | Decision Trees, Random Forests, AdaBoost, Gradient Boosting |
+| `LightGBM`                  | Gradient boosting with optimized performance                |
+| `XGBoost`                   | Extreme gradient boosting                                   |
+| `CatBoost`                  | Gradient boosting with categorical feature support          |
+| `hyperparameter-optimizer`  | Automated hyperparameter tuning                             |
+| `MLflow`                    | Experiment tracking and model management                    |
+| `joblib`                    | Model serialization and versioning                          |
+| `pandas`                    | Data preprocessing & transformation                         |
+
+---
+🔹 Notes
+
+    Particle Swarm Optimization (PSO) is a nature-inspired global optimization algorithm that efficiently explores the hyperparameter space, outperforming traditional grid and random search strategies in both convergence speed and solution quality.
+---
+
+### [7] MLOps Churn Prediction Pipeline
 
 This project demonstrates an end-to-end **MLOps pipeline** for customer churn prediction using a real-world telecom dataset. It integrates **CI/CD, drift detection, model retraining, versioning, and model performance tracking** with **MLflow**.
 
