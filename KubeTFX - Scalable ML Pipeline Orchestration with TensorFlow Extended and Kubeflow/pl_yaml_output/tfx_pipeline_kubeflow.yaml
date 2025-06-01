@@ -1,0 +1,2924 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: us-charges-pipeline-kubeflow-
+  annotations: {pipelines.kubeflow.org/kfp_sdk_version: 1.0.4, pipelines.kubeflow.org/pipeline_compilation_time: '2024-12-18T23:12:58.062832',
+    pipelines.kubeflow.org/pipeline_spec: '{"description": "Constructs a Kubeflow
+      pipeline.\n\n      Creates Kubeflow ContainerOps for each TFX component encountered
+      in the\n      logical pipeline definition.", "inputs": [{"default": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output",
+      "name": "pipeline-root"}], "name": "us_charges_pipeline_kubeflow"}'}
+  labels: {pipelines.kubeflow.org/kfp_sdk_version: 1.0.4}
+spec:
+  entrypoint: us-charges-pipeline-kubeflow
+  templates:
+  - name: csvexamplegen
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - CsvExampleGen
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.example_gen.csv_example_gen.component.CsvExampleGen"
+                  },
+                  "id": "CsvExampleGen"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.CsvExampleGen"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "outputs": {
+                  "outputs": {
+                    "examples": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Examples",
+                          "properties": {
+                            "version": "INT",
+                            "span": "INT",
+                            "split_names": "STRING"
+                          },
+                          "baseType": "DATASET"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "output_data_format": {
+                      "fieldValue": {
+                        "intValue": "6"
+                      }
+                    },
+                    "output_file_format": {
+                      "fieldValue": {
+                        "intValue": "5"
+                      }
+                    },
+                    "output_config": {
+                      "fieldValue": {
+                        "stringValue": "{}"
+                      }
+                    },
+                    "input_config": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"splits\": [\n    {\n      \"name\": \"train\",\n      \"pattern\": \"span-{SPAN}/train/*.csv\"\n    },\n    {\n      \"name\": \"eval\",\n      \"pattern\": \"span-{SPAN}/eval/*.csv\"\n    }\n  ]\n}"
+                      }
+                    },
+                    "input_base": {
+                      "fieldValue": {
+                        "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/data"
+                      }
+                    }
+                  }
+                },
+                "downstreamNodes": [
+                  "Evaluator",
+                  "StatisticsGen",
+                  "Transform"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "CsvExampleGen": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.BeamExecutableSpec",
+                "pythonExecutorSpec": {
+                  "classPath": "tfx.components.example_gen.csv_example_gen.executor.Executor"
+                },
+                "beamPipelineArgs": [
+                  "--direct_num_workers=0",
+                  "--direct_running_mode=multi_processing"
+                ],
+                "beamPipelineArgsPlaceholders": [
+                  {
+                    "value": {
+                      "stringValue": "--direct_num_workers=0"
+                    }
+                  },
+                  {
+                    "value": {
+                      "stringValue": "--direct_running_mode=multi_processing"
+                    }
+                  }
+                ]
+              }
+            },
+            "customDriverSpecs": {
+              "CsvExampleGen": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.example_gen.driver.FileBasedDriver"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: evaluator
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Evaluator
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.evaluator.component.Evaluator",
+                    "baseType": "EVALUATE"
+                  },
+                  "id": "Evaluator"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Evaluator"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "examples": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "CsvExampleGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.CsvExampleGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Examples",
+                              "baseType": "DATASET"
+                            }
+                          },
+                          "outputKey": "examples"
+                        }
+                      ],
+                      "minCount": 1
+                    },
+                    "baseline_model": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Resolver"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Resolver"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Model",
+                              "baseType": "MODEL"
+                            }
+                          },
+                          "outputKey": "model"
+                        }
+                      ]
+                    },
+                    "model": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Trainer"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Trainer"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Model",
+                              "baseType": "MODEL"
+                            }
+                          },
+                          "outputKey": "model"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "blessing": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ModelBlessing"
+                        }
+                      }
+                    },
+                    "evaluation": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ModelEvaluation"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "fairness_indicator_thresholds": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    },
+                    "eval_config": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"metrics_specs\": [\n    {\n      \"metrics\": [\n        {\n          \"class_name\": \"MeanAbsoluteError\"\n        },\n        {\n          \"class_name\": \"MeanSquaredError\"\n        },\n        {\n          \"class_name\": \"RootMeanSquaredError\"\n        },\n        {\n          \"class_name\": \"ExampleCount\"\n        }\n      ],\n      \"thresholds\": {\n        \"mean_absolute_error\": {\n          \"change_threshold\": {\n            \"absolute\": 0.0,\n            \"direction\": \"LOWER_IS_BETTER\"\n          },\n          \"value_threshold\": {\n            \"lower_bound\": 50.0\n          }\n        }\n      }\n    }\n  ],\n  \"model_specs\": [\n    {\n      \"label_key\": \"charges\"\n    }\n  ],\n  \"slicing_specs\": [\n    {}\n  ]\n}"
+                      }
+                    },
+                    "example_splits": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "CsvExampleGen",
+                  "Resolver",
+                  "Trainer"
+                ],
+                "downstreamNodes": [
+                  "Pusher"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "Evaluator": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.BeamExecutableSpec",
+                "pythonExecutorSpec": {
+                  "classPath": "tfx.components.evaluator.executor.Executor"
+                },
+                "beamPipelineArgs": [
+                  "--direct_num_workers=0",
+                  "--direct_running_mode=multi_processing"
+                ],
+                "beamPipelineArgsPlaceholders": [
+                  {
+                    "value": {
+                      "stringValue": "--direct_num_workers=0"
+                    }
+                  },
+                  {
+                    "value": {
+                      "stringValue": "--direct_running_mode=multi_processing"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: examplevalidator
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - ExampleValidator
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.example_validator.component.ExampleValidator"
+                  },
+                  "id": "ExampleValidator"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.ExampleValidator"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "schema": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "SchemaGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.SchemaGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Schema"
+                            }
+                          },
+                          "outputKey": "schema"
+                        }
+                      ],
+                      "minCount": 1
+                    },
+                    "statistics": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "StatisticsGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.StatisticsGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "ExampleStatistics",
+                              "baseType": "STATISTICS"
+                            }
+                          },
+                          "outputKey": "statistics"
+                        }
+                      ],
+                      "minCount": 1
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "anomalies": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ExampleAnomalies",
+                          "properties": {
+                            "split_names": "STRING",
+                            "span": "INT"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "exclude_splits": {
+                      "fieldValue": {
+                        "stringValue": "[]"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "SchemaGen",
+                  "StatisticsGen"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "ExampleValidator": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.example_validator.executor.Executor"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: pusher
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Pusher
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.pusher.component.Pusher",
+                    "baseType": "DEPLOY"
+                  },
+                  "id": "Pusher"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Pusher"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "model_blessing": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Evaluator"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Evaluator"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "ModelBlessing"
+                            }
+                          },
+                          "outputKey": "blessing"
+                        }
+                      ]
+                    },
+                    "model": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Trainer"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Trainer"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Model",
+                              "baseType": "MODEL"
+                            }
+                          },
+                          "outputKey": "model"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "pushed_model": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "PushedModel",
+                          "baseType": "MODEL"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "custom_config": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    },
+                    "push_destination": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"filesystem\": {\n    \"base_directory\": \"/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output/serving_model_dir\"\n  }\n}"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "Evaluator",
+                  "Trainer"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "Pusher": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.pusher.executor.Executor"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: resolver
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Resolver
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.dsl.components.common.resolver.Resolver"
+                  },
+                  "id": "Resolver"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Resolver"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "model": {
+                      "inputGraphRef": {
+                        "graphId": "graph_1",
+                        "key": "model"
+                      }
+                    },
+                    "_generated_model_3": {
+                      "channels": [
+                        {
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Model",
+                              "baseType": "MODEL"
+                            }
+                          }
+                        }
+                      ],
+                      "hidden": true
+                    },
+                    "_generated_modelblessing_4": {
+                      "channels": [
+                        {
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "ModelBlessing"
+                            }
+                          }
+                        }
+                      ],
+                      "hidden": true
+                    },
+                    "model_blessing": {
+                      "inputGraphRef": {
+                        "graphId": "graph_1",
+                        "key": "model_blessing"
+                      }
+                    }
+                  },
+                  "inputGraphs": {
+                    "graph_1": {
+                      "nodes": {
+                        "input_3": {
+                          "outputDataType": "ARTIFACT_LIST",
+                          "inputNode": {
+                            "inputKey": "_generated_model_3"
+                          }
+                        },
+                        "input_4": {
+                          "outputDataType": "ARTIFACT_LIST",
+                          "inputNode": {
+                            "inputKey": "_generated_modelblessing_4"
+                          }
+                        },
+                        "dict_2": {
+                          "outputDataType": "ARTIFACT_MULTIMAP",
+                          "dictNode": {
+                            "nodeIds": {
+                              "model": "input_3",
+                              "model_blessing": "input_4"
+                            }
+                          }
+                        },
+                        "op_1": {
+                          "outputDataType": "ARTIFACT_MULTIMAP",
+                          "opNode": {
+                            "opType": "tfx.dsl.input_resolution.strategies.latest_blessed_model_strategy.LatestBlessedModelStrategy",
+                            "args": [
+                              {
+                                "nodeId": "dict_2"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "resultNode": "op_1"
+                    }
+                  }
+                },
+                "downstreamNodes": [
+                  "Evaluator"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig"
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: schemagen
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - SchemaGen
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.schema_gen.component.SchemaGen",
+                    "baseType": "PROCESS"
+                  },
+                  "id": "SchemaGen"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.SchemaGen"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "statistics": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "StatisticsGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.StatisticsGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "ExampleStatistics",
+                              "baseType": "STATISTICS"
+                            }
+                          },
+                          "outputKey": "statistics"
+                        }
+                      ],
+                      "minCount": 1
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "schema": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Schema"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "infer_feature_shape": {
+                      "fieldValue": {
+                        "intValue": "1"
+                      }
+                    },
+                    "exclude_splits": {
+                      "fieldValue": {
+                        "stringValue": "[\"eval\"]"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "StatisticsGen"
+                ],
+                "downstreamNodes": [
+                  "ExampleValidator",
+                  "Trainer",
+                  "Transform"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "SchemaGen": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.schema_gen.executor.Executor"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: statisticsgen
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - StatisticsGen
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.statistics_gen.component.StatisticsGen",
+                    "baseType": "PROCESS"
+                  },
+                  "id": "StatisticsGen"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.StatisticsGen"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "examples": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "CsvExampleGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.CsvExampleGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Examples",
+                              "baseType": "DATASET"
+                            }
+                          },
+                          "outputKey": "examples"
+                        }
+                      ],
+                      "minCount": 1
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "statistics": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ExampleStatistics",
+                          "properties": {
+                            "split_names": "STRING",
+                            "span": "INT"
+                          },
+                          "baseType": "STATISTICS"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "exclude_splits": {
+                      "fieldValue": {
+                        "stringValue": "[\"eval\"]"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "CsvExampleGen"
+                ],
+                "downstreamNodes": [
+                  "ExampleValidator",
+                  "SchemaGen"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "StatisticsGen": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.BeamExecutableSpec",
+                "pythonExecutorSpec": {
+                  "classPath": "tfx.components.statistics_gen.executor.Executor"
+                },
+                "beamPipelineArgs": [
+                  "--direct_num_workers=0",
+                  "--direct_running_mode=multi_processing"
+                ],
+                "beamPipelineArgsPlaceholders": [
+                  {
+                    "value": {
+                      "stringValue": "--direct_num_workers=0"
+                    }
+                  },
+                  {
+                    "value": {
+                      "stringValue": "--direct_running_mode=multi_processing"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: trainer
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Trainer
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.trainer.component.Trainer",
+                    "baseType": "TRAIN"
+                  },
+                  "id": "Trainer"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Trainer"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "examples": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Transform"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Transform"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Examples",
+                              "baseType": "DATASET"
+                            }
+                          },
+                          "outputKey": "transformed_examples"
+                        }
+                      ],
+                      "minCount": 1
+                    },
+                    "schema": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "SchemaGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.SchemaGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Schema"
+                            }
+                          },
+                          "outputKey": "schema"
+                        }
+                      ]
+                    },
+                    "transform_graph": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Transform"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Transform"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "TransformGraph"
+                            }
+                          },
+                          "outputKey": "transform_graph"
+                        }
+                      ]
+                    },
+                    "hyperparameters": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Tuner"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Tuner"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "HyperParameters"
+                            }
+                          },
+                          "outputKey": "best_hyperparameters"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "model": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Model",
+                          "baseType": "MODEL"
+                        }
+                      }
+                    },
+                    "model_run": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ModelRun"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "eval_args": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"num_steps\": 100\n}"
+                      }
+                    },
+                    "train_args": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"num_steps\": 500\n}"
+                      }
+                    },
+                    "custom_config": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    },
+                    "module_path": {
+                      "fieldValue": {
+                        "stringValue": "module@/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output/_wheels/tfx_user_code_Trainer-0.0+87df02561534fa4793d7aa01a1e870c109172a3957d88f78e4ba263c7f1168b9-py3-none-any.whl"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "SchemaGen",
+                  "Transform",
+                  "Tuner"
+                ],
+                "downstreamNodes": [
+                  "Evaluator",
+                  "Pusher"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "Trainer": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.trainer.executor.GenericExecutor"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: transform
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Transform
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.transform.component.Transform",
+                    "baseType": "TRANSFORM"
+                  },
+                  "id": "Transform"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Transform"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "schema": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "SchemaGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.SchemaGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Schema"
+                            }
+                          },
+                          "outputKey": "schema"
+                        }
+                      ],
+                      "minCount": 1
+                    },
+                    "examples": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "CsvExampleGen"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.CsvExampleGen"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Examples",
+                              "baseType": "DATASET"
+                            }
+                          },
+                          "outputKey": "examples"
+                        }
+                      ],
+                      "minCount": 1
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "pre_transform_stats": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ExampleStatistics",
+                          "properties": {
+                            "span": "INT",
+                            "split_names": "STRING"
+                          },
+                          "baseType": "STATISTICS"
+                        }
+                      }
+                    },
+                    "post_transform_stats": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ExampleStatistics",
+                          "properties": {
+                            "split_names": "STRING",
+                            "span": "INT"
+                          },
+                          "baseType": "STATISTICS"
+                        }
+                      }
+                    },
+                    "post_transform_schema": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Schema"
+                        }
+                      }
+                    },
+                    "pre_transform_schema": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Schema"
+                        }
+                      }
+                    },
+                    "transform_graph": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "TransformGraph"
+                        }
+                      }
+                    },
+                    "updated_analyzer_cache": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "TransformCache"
+                        }
+                      }
+                    },
+                    "post_transform_anomalies": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "ExampleAnomalies",
+                          "properties": {
+                            "span": "INT",
+                            "split_names": "STRING"
+                          }
+                        }
+                      }
+                    },
+                    "transformed_examples": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "Examples",
+                          "properties": {
+                            "split_names": "STRING",
+                            "version": "INT",
+                            "span": "INT"
+                          },
+                          "baseType": "DATASET"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "custom_config": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    },
+                    "disable_statistics": {
+                      "fieldValue": {
+                        "intValue": "0"
+                      }
+                    },
+                    "force_tf_compat_v1": {
+                      "fieldValue": {
+                        "intValue": "0"
+                      }
+                    },
+                    "module_path": {
+                      "fieldValue": {
+                        "stringValue": "module@/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output/_wheels/tfx_user_code_Transform-0.0+87df02561534fa4793d7aa01a1e870c109172a3957d88f78e4ba263c7f1168b9-py3-none-any.whl"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "CsvExampleGen",
+                  "SchemaGen"
+                ],
+                "downstreamNodes": [
+                  "Trainer",
+                  "Tuner"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "Transform": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.BeamExecutableSpec",
+                "pythonExecutorSpec": {
+                  "classPath": "tfx.components.transform.executor.Executor"
+                },
+                "beamPipelineArgs": [
+                  "--direct_num_workers=0",
+                  "--direct_running_mode=multi_processing"
+                ],
+                "beamPipelineArgsPlaceholders": [
+                  {
+                    "value": {
+                      "stringValue": "--direct_num_workers=0"
+                    }
+                  },
+                  {
+                    "value": {
+                      "stringValue": "--direct_running_mode=multi_processing"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: tuner
+    container:
+      args:
+      - --pipeline_root
+      - '{{inputs.parameters.pipeline-root}}'
+      - --kubeflow_metadata_config
+      - |-
+        {
+          "grpc_config": {
+            "grpc_service_host": {
+              "environment_variable": "METADATA_GRPC_SERVICE_HOST"
+            },
+            "grpc_service_port": {
+              "environment_variable": "METADATA_GRPC_SERVICE_PORT"
+            }
+          }
+        }
+      - --node_id
+      - Tuner
+      - --tfx_ir
+      - |-
+        {
+          "pipelineInfo": {
+            "id": "us_charges_pipeline_kubeflow"
+          },
+          "nodes": [
+            {
+              "pipelineNode": {
+                "nodeInfo": {
+                  "type": {
+                    "name": "tfx.components.tuner.component.Tuner"
+                  },
+                  "id": "Tuner"
+                },
+                "contexts": {
+                  "contexts": [
+                    {
+                      "type": {
+                        "name": "pipeline"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "pipeline_run"
+                      },
+                      "name": {
+                        "runtimeParameter": {
+                          "name": "pipeline-run-id",
+                          "type": "STRING"
+                        }
+                      }
+                    },
+                    {
+                      "type": {
+                        "name": "node"
+                      },
+                      "name": {
+                        "fieldValue": {
+                          "stringValue": "us_charges_pipeline_kubeflow.Tuner"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "inputs": {
+                  "inputs": {
+                    "examples": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Transform"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Transform"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "Examples",
+                              "baseType": "DATASET"
+                            }
+                          },
+                          "outputKey": "transformed_examples"
+                        }
+                      ],
+                      "minCount": 1
+                    },
+                    "transform_graph": {
+                      "channels": [
+                        {
+                          "producerNodeQuery": {
+                            "id": "Transform"
+                          },
+                          "contextQueries": [
+                            {
+                              "type": {
+                                "name": "pipeline"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "pipeline_run"
+                              },
+                              "name": {
+                                "runtimeParameter": {
+                                  "name": "pipeline-run-id",
+                                  "type": "STRING"
+                                }
+                              }
+                            },
+                            {
+                              "type": {
+                                "name": "node"
+                              },
+                              "name": {
+                                "fieldValue": {
+                                  "stringValue": "us_charges_pipeline_kubeflow.Transform"
+                                }
+                              }
+                            }
+                          ],
+                          "artifactQuery": {
+                            "type": {
+                              "name": "TransformGraph"
+                            }
+                          },
+                          "outputKey": "transform_graph"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "outputs": {
+                  "outputs": {
+                    "tuner_results": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "TunerResults"
+                        }
+                      }
+                    },
+                    "best_hyperparameters": {
+                      "artifactSpec": {
+                        "type": {
+                          "name": "HyperParameters"
+                        }
+                      }
+                    }
+                  }
+                },
+                "parameters": {
+                  "parameters": {
+                    "module_path": {
+                      "fieldValue": {
+                        "stringValue": "module@/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output/_wheels/tfx_user_code_Tuner-0.0+87df02561534fa4793d7aa01a1e870c109172a3957d88f78e4ba263c7f1168b9-py3-none-any.whl"
+                      }
+                    },
+                    "eval_args": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"num_steps\": 5\n}"
+                      }
+                    },
+                    "custom_config": {
+                      "fieldValue": {
+                        "stringValue": "null"
+                      }
+                    },
+                    "train_args": {
+                      "fieldValue": {
+                        "stringValue": "{\n  \"num_steps\": 20\n}"
+                      }
+                    }
+                  }
+                },
+                "upstreamNodes": [
+                  "Transform"
+                ],
+                "downstreamNodes": [
+                  "Trainer"
+                ],
+                "executionOptions": {
+                  "cachingOptions": {}
+                }
+              }
+            }
+          ],
+          "runtimeSpec": {
+            "pipelineRoot": {
+              "runtimeParameter": {
+                "name": "pipeline-root",
+                "type": "STRING",
+                "defaultValue": {
+                  "stringValue": "/home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output"
+                }
+              }
+            },
+            "pipelineRunId": {
+              "runtimeParameter": {
+                "name": "pipeline-run-id",
+                "type": "STRING"
+              }
+            }
+          },
+          "executionMode": "SYNC",
+          "deploymentConfig": {
+            "@type": "type.googleapis.com/tfx.orchestration.IntermediateDeploymentConfig",
+            "executorSpecs": {
+              "Tuner": {
+                "@type": "type.googleapis.com/tfx.orchestration.executable_spec.PythonClassExecutableSpec",
+                "classPath": "tfx.components.tuner.executor.Executor"
+              }
+            }
+          }
+        }
+      - --metadata_ui_path
+      - /mlpipeline-ui-metadata.json
+      - --runtime_parameter
+      - pipeline-root=STRING:{{inputs.parameters.pipeline-root}}
+      command: [python, -m, tfx.orchestration.kubeflow.container_entrypoint]
+      env:
+      - name: WORKFLOW_ID
+        valueFrom:
+          fieldRef: {fieldPath: 'metadata.labels[''workflows.argoproj.io/workflow'']'}
+      - name: KFP_POD_NAME
+        valueFrom:
+          fieldRef: {fieldPath: metadata.name}
+      - name: KFP_NAMESPACE
+        valueFrom:
+          fieldRef: {fieldPath: metadata.namespace}
+      envFrom:
+      - configMapRef: {name: metadata-grpc-configmap, optional: true}
+      image: tensorflow/tfx:1.15.1
+      volumeMounts:
+      - {mountPath: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3, name: tfx-pv}
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    outputs:
+      artifacts:
+      - {name: mlpipeline-ui-metadata, path: /mlpipeline-ui-metadata.json}
+    metadata:
+      labels:
+        add-pod-env: "true"
+        pipelines.kubeflow.org/pipeline-sdk-type: tfx
+    volumes:
+    - name: tfx-pv
+      persistentVolumeClaim: {claimName: tfx-pvc}
+  - name: us-charges-pipeline-kubeflow
+    inputs:
+      parameters:
+      - {name: pipeline-root}
+    dag:
+      tasks:
+      - name: csvexamplegen
+        template: csvexamplegen
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: evaluator
+        template: evaluator
+        dependencies: [csvexamplegen, resolver, trainer]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: examplevalidator
+        template: examplevalidator
+        dependencies: [schemagen, statisticsgen]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: pusher
+        template: pusher
+        dependencies: [evaluator, trainer]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: resolver
+        template: resolver
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: schemagen
+        template: schemagen
+        dependencies: [statisticsgen]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: statisticsgen
+        template: statisticsgen
+        dependencies: [csvexamplegen]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: trainer
+        template: trainer
+        dependencies: [schemagen, transform, tuner]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: transform
+        template: transform
+        dependencies: [csvexamplegen, schemagen]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+      - name: tuner
+        template: tuner
+        dependencies: [transform]
+        arguments:
+          parameters:
+          - {name: pipeline-root, value: '{{inputs.parameters.pipeline-root}}'}
+  arguments:
+    parameters:
+    - {name: pipeline-root, value: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3/output}
+  serviceAccountName: pipeline-runner
