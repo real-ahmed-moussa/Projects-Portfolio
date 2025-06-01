@@ -141,16 +141,16 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
  > **This solution provided a scalable framework for selecting and tuning models in high-stakes decision-making contexts, delivering improved predictive accuracy and faster iteration cycles.**
 
 ### ⚡️ **Tech Stack**
-| Technology                  | Purpose                                                     |
-|-----------------------------|-------------------------------------------------------------|
-| `scikit-learn`              | Decision Trees, Random Forests, AdaBoost, Gradient Boosting |
-| `LightGBM`                  | Gradient boosting with optimized performance                |
-| `XGBoost`                   | Extreme gradient boosting                                   |
-| `CatBoost`                  | Gradient boosting with categorical feature support          |
-| `hyperparameter-optimizer`  | Automated hyperparameter tuning                             |
-| `MLflow`                    | Experiment tracking and model management                    |
-| `joblib`                    | Model serialization and versioning                          |
-| `pandas`                    | Data preprocessing & transformation                         |
+| Technology                  | Purpose                                                      |
+|-----------------------------|--------------------------------------------------------------|
+| `scikit-learn`              | Decision Trees, Random Forests, AdaBoost, Gradient Boosting. |
+| `LightGBM`                  | Gradient boosting with optimized performance.                |
+| `XGBoost`                   | Extreme gradient boosting.                                   |
+| `CatBoost`                  | Gradient boosting with categorical feature support.          |
+| `hyperparameter-optimizer`  | Automated hyperparameter tuning.                             |
+| `MLflow`                    | Experiment tracking and model management.                    |
+| `joblib`                    | Model serialization and versioning.                          |
+| `pandas`                    | Data preprocessing & transformation.                         |
 
 ---
 
@@ -161,14 +161,14 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
  > **This solution provided the business with actionable intelligence on customer purchasing behavior, increasing campaign efficiency and supporting data-driven policy recommendations.**
 
 ### ⚡️ **Tech Stack**
-| Technology          | Purpose                                                  |
-|-------------------- |----------------------------------------------------------|
-| `TensorFlow`        | Neural network model development                         |
-| `scikit-learn`      | Data preprocessing, feature engineering, model pipelines |
-| `NumPy`             | Data manipulation                                        |
-| `pandas`            | Data preprocessing & analysis                            |
-| `matplotlib`        | Data visualization and customization                     |
-| `seaborn`           | Statistical data visualization                           |
+| Technology          | Purpose                                                   |
+|-------------------- |-----------------------------------------------------------|
+| `TensorFlow`        | Neural network model development.                         |
+| `scikit-learn`      | Data preprocessing, feature engineering, model pipelines. |
+| `NumPy`             | Data manipulation.                                        |
+| `pandas`            | Data preprocessing & analysis.                            |
+| `matplotlib`        | Data visualization and customization.                     |
+| `seaborn`           | Statistical data visualization.                           |
 
 ---
 
@@ -179,11 +179,11 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
  > **This approach provided fast, interpretable insights into customer behavior, helping stakeholders prioritize leads and tailor communication strategies without the overhead of deep learning infrastructure.**
 
 ### ⚡️ **Tech Stack**
-| Technology          | Purpose                                                                           |
-|-------------------- |-----------------------------------------------------------------------------------|
-| `scikit-learn`      | Data preprocessing, model development (Logistic Regression, Random Forests, SVMs) |
-| `pandas`            | Data preprocessing & analysis                                                     |
-| `NumPy`             | Data manipulation                                                                 |
+| Technology          | Purpose                                                                            |
+|-------------------- |------------------------------------------------------------------------------------|
+| `scikit-learn`      | Data preprocessing, model development (Logistic Regression, Random Forests, SVMs). |
+| `pandas`            | Data preprocessing & analysis.                                                     |
+| `NumPy`             | Data manipulation.                                                                 |
 
 ---
 
@@ -196,8 +196,8 @@ Portfolio of my projects to date. Only projects with no confidentiality requirem
 ***[Multiclass Classification]***
 
 ### ⚡️ **Tech Stack**
-| Technology          | Purpose                                                                                        |
-|-------------------- |------------------------------------------------------------------------------------------------|
-| `R Libraries`       | Model development (Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and ANNs) |
-| `pandas`            | Data preprocessing & analysis                                                                  |
-| `NumPy`             | Data manipulation                                                                              |
+| Technology          | Purpose                                                                                         |
+|-------------------- |-------------------------------------------------------------------------------------------------|
+| `R Libraries`       | Model development (Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and ANNs). |
+| `pandas`            | Data preprocessing & analysis.                                                                  |
+| `NumPy`             | Data manipulation.                                                                              |
