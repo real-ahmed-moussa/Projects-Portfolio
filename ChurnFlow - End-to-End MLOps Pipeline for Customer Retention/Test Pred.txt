@@ -1,0 +1,25 @@
+curl -X POST -H "Content-Type: application/json" -d '{
+    "tenure": 12,
+    "MonthlyCharges": 29.99,
+    "TotalCharges": 349.88,
+    "gender": 0,
+    "Partner": 1,
+    "Dependents": 0,
+    "PhoneService": 1,
+    "MultipleLines": 1,
+    "InternetService": 0,
+    "OnlineSecurity": 1,
+    "OnlineBackup": 0,
+    "DeviceProtection": 2,
+    "TechSupport": 0,
+    "StreamingTV": 1,
+    "StreamingMovies": 0,
+    "Contract": 1,
+    "PaperlessBilling": 1,
+    "PaymentMethod": 3
+}' http://127.0.0.1:8000/predict
+
+
+
+----------------------
+127.0.0.1:8001/monitor
