@@ -1,6 +1,0 @@
-artifact_location: file:///home/ahmedmoussa/training-files/mlops_ppln/src/mlruns/747261257492686363
-creation_time: 1741895189989
-experiment_id: '747261257492686363'
-last_update_time: 1741895189989
-lifecycle_stage: active
-name: churn_prediction
