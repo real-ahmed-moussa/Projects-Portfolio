@@ -16,7 +16,7 @@
 
 
 ## 🏢 Business Impact
-   > Demonstrates the potential of AI-powered video analysis to **automate complex video review processes**, enabling applications such as **real-time quality inspection, security anomaly detection, and automated video tagging**, reducing manual review time and increasing insight accuracy.
+   > *Demonstrates the potential of AI-powered video analysis to **automate complex video review processes**, enabling applications such as **real-time quality inspection, security anomaly detection, and automated video tagging**, reducing manual review time and increasing insight accuracy.*
 
 
 ## ⚙️ Tech Stack

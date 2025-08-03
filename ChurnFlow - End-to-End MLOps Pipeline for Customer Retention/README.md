@@ -16,7 +16,7 @@
 
 
 ## 🏢 Business Impact
-   > This pipeline significantly reduced the time-to-deployment and maintenance overhead for predictive models, enabling proactive customer retention strategies. Telecom teams could identify at-risk customers early, reducing churn rates and improving overall customer lifetime value.
+   > *This pipeline significantly reduced the time-to-deployment and maintenance overhead for predictive models, enabling proactive customer retention strategies. Telecom teams could identify at-risk customers early, reducing churn rates and improving overall customer lifetime value.*
 
 
 ## ⚙️ Tech Stack
@@ -90,6 +90,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 ## 📊 Results
    - **Baseline Logistic Regression Model Accuracy:** 80%
+   - **Baseline Logistic Regression Model AUC:** 84%
    - **EvidentlyAI reports:** Drift visualization available in `report.html`.
 
 
