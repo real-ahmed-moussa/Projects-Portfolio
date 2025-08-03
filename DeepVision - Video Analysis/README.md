@@ -30,7 +30,7 @@
 | `NumPy`      | Data handling and manipulation           |
 
 
-## Model Architecture
+## 🧠 Model Architecture
 ![Model Architecture](convlstm_architecture.png)
 
 
