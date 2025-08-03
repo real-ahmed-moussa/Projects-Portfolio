@@ -36,8 +36,8 @@
  ┣ 📂 models         
  ┣ 📂 notebooks
  ┣ 📜 convlstm_architecture.png 
- ┣ 📜 README.md
- ┗ 📜 Requirements.txt
+ ┣ README.md
+ ┗ Requirements.txt
 </pre>
 
 
