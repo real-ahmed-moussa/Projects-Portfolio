@@ -76,6 +76,7 @@ pip install -r requirements.txt
 ▶️ **Usage**
 
 1️⃣ **Train and Save Model**
+
 Run the training script to train and version your model:
 <pre>
 python src/train_model.py
@@ -86,6 +87,7 @@ This will:
  - Log parameters, metrics, and artifacts in MLflow (`mlruns/` directory).
 
 2️⃣ **Start API Server**
+
 Use Docker to build and run the API container:
 <pre>
 docker build -t churnflow-api -f Dockerfile.api .
