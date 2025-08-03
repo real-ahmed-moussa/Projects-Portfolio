@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 3️⃣ **Launch Jupyter Notebook**
 <pre>
-jupyter notebook OptiTree_Notebook.ipynb
+jupyter notebook 'OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization.ipynb'
 </pre>
 
 
