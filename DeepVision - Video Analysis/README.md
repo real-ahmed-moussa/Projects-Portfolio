@@ -35,9 +35,9 @@
 📦 DeepVision - Video Analysis 
  ┣ 📂 models         
  ┣ 📂 notebooks
- ┣ convlstm_architecture.png 
- ┣ README.md
- ┗ Requirements.txt
+ ┣ 📜 convlstm_architecture.png 
+ ┣ 📜 README.md
+ ┗ 📜 Requirements.txt
 </pre>
 
 

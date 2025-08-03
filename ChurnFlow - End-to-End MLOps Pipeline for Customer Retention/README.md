@@ -60,17 +60,21 @@
 git clone https://github.com/ahmedmoussa/Projects-Portfolio.git
 cd churnflow-mlops-pipeline
 </pre>
+
 2️⃣ **Create Virtual Environment**
 <pre>
 python -m venv venv
 source venv/bin/activate
 </pre>
+
 3️⃣ **Install Dependencies**
 <pre>
 pip install -r requirements.txt
 </pre>
 
+
 ▶️ **Usage**
+
 1️⃣ **Train and Save Model**
 Run the training script to train and version your model:
 <pre>
@@ -80,6 +84,7 @@ This will:
  - Train a Logistic Regression model on the churn dataset.
  - Save the model to the `models/` folder.
  - Log parameters, metrics, and artifacts in MLflow (`mlruns/` directory).
+
 2️⃣ **Start API Server**
 Use Docker to build and run the API container:
 <pre>
@@ -90,6 +95,7 @@ The API will be available at:
 <pre>
 http://localhost:8000/predict
 </pre>
+
 3️⃣ **Make Predictions**
 <pre>
 curl -X POST -H "Content-Type: application/json" -d '{
@@ -113,6 +119,7 @@ curl -X POST -H "Content-Type: application/json" -d '{
     "PaymentMethod": 3
 }' http://127.0.0.1:8000/predict
 </pre>
+
 4️⃣ **Monitor Drift**
 <pre>
 docker build -t churnflow-monitor -f Dockerfile.monitor .
