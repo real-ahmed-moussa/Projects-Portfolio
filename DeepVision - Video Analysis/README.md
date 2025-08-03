@@ -28,6 +28,9 @@
 | `CNN`        | Spatial feature extraction               |
 | `LSTM`       | Temporal sequence modeling               |
 | `NumPy`      | Data handling and manipulation           |
+
+
+## Model Architecture
 ![Model Architecture](convlstm_architecture.png)
 
 
