@@ -42,7 +42,7 @@
 
 
 ## 🛠️ Installation
-1️⃣ **Clone the repository**
+1️⃣ **Clone the Repository**
 <pre>
 git clone https://github.com/ahmedmoussa/Projects-Portfolio.git
 cd 'DeepVision - Video Analysis'
@@ -62,8 +62,8 @@ jupyter notebook notebooks/deepvision_convlstm.ipynb
 
 
 ## 📊 Results
-   - **Model accuracy:** 84%
-   - **Key metrics:** Precision=85%, Recall=84%, AUC=97%
+   - **Model Accuracy:** 84%
+   - **Key Metrics:** Precision=85%, Recall=84%, AUC=97%
 
 
 ## 📝 License
