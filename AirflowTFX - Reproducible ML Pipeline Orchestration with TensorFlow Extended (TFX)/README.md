@@ -47,7 +47,7 @@
 1️⃣ **Clone the Repository**
 <pre>
 git clone https://github.com/ahmedmoussa/Projects-Portfolio.git
-cd airflow-tfx-pipeline
+cd 'AirflowTFX - Reproducible ML Pipeline Orchestration with TensorFlow Extended (TFX)'
 </pre>
 
 2️⃣ **Setup Airflow Environment**
