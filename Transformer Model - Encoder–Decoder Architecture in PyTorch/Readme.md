@@ -41,7 +41,7 @@ Figure is from the original Attention Is All You Need paper (see references).
 
 ## 📂 Project Structure
 <pre>
-📦 Transformer Model
+📦 Transformer Model - Encoder–Decoder Architecture in PyTorch
  ┣ 📜 Transformer_Model.ipynb          # Jupyter Notebook with full implementation
  ┣ 📜 Original_Transformer_Arch.png
  ┗ README.md               
@@ -52,7 +52,7 @@ Figure is from the original Attention Is All You Need paper (see references).
 1️⃣ **Clone the Repository**
 <pre>
 git clone https://github.com/ahmedmoussa/Projects-Portfolio.git
-cd 'Transformer_Model'
+cd 'Transformer Model - Encoder–Decoder Architecture in PyTorch'
 </pre>
 
 2️⃣ **Install Dependencies**
