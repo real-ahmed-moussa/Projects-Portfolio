@@ -1,5 +1,5 @@
 # 📌 Transformer Model: Encoder–Decoder Architecture in PyTorch
-> Implementation of the Transformer architecture from scratch using PyTorch. This project demonstrates the key building blocks of Transformers—positional encoding, multi-head attention, encoder and decoder layers—without relying on high-level libraries like Hugging Face
+> Implementation of the Transformer architecture from scratch using PyTorch. This project demonstrates the key building blocks of Transformers—positional encoding, multi-head attention, encoder and decoder layers—without relying on high-level libraries like Hugging Face.
 
 
 ## 📖 Overview
@@ -35,7 +35,7 @@ This implementation can be used to:
 
 
 ## Original Transformer Architecture
-Figure is from the original Attention Is All You Need paper (see references).
+Figure is from the original ***Attention Is All You Need*** paper (see the references).
 ![Original Transformer Architecture](Original_Transformer_Arch.png)
 
 
