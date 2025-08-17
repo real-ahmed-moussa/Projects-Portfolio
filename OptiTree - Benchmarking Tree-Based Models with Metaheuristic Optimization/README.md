@@ -34,10 +34,15 @@
 | `pandas`                   | Data preprocessing & transformation                                  |
 
 
+## Models Performance Summary
+![Models Performance Summary](models_comparison.png)
+
+
 ## 📂 Project Structure
 <pre>
 📦 OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization
- ┣ 📜 OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization.ipynb    # Main notebook (data preprocessing, training, optimization, results) 
+ ┣ 📜 OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization.ipynb    # Main notebook (data preprocessing, training, optimization, results)
+ ┣ 📜 models_comparison.png
  ┣ requirements.txt
  ┗ README.md
 </pre>

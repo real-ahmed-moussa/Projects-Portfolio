@@ -43,6 +43,7 @@ Figure is from the original Attention Is All You Need paper (see references).
 <pre>
 📦 Transformer Model
  ┣ 📜 Transformer_Model.ipynb          # Jupyter Notebook with full implementation
+ ┣ 📜 Original_Transformer_Arch.png
  ┗ README.md               
 </pre>
 
