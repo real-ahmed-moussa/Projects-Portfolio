@@ -23,7 +23,6 @@ OptiTree provides organizations with a **scalable, automated framework for selec
 ## ⚙️ Tech Stack
 | Technology                 | Purpose                                                              |
 | -------------------------- | -------------------------------------------------------------------- |
-| `Python`                   | Core programming language                                            |
 | `scikit-learn`             | Provides Decision Trees, Random Forests, AdaBoost, Gradient Boosting |
 | `LightGBM`                 | Gradient boosting with optimized performance                         |
 | `XGBoost`                  | Extreme gradient boosting                                            |

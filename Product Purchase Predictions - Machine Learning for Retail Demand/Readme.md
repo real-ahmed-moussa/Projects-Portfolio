@@ -10,7 +10,7 @@
 
 
 ## 🏢 Business Impact
-*Enable smarter **inventory planning, procurement, and targeted promotions** by anticipating product-level demand. Multi-output forecasts reduce operational risk, improve stock availability, and support staffing decisions—store by store, day by day.
+Enable smarter **inventory planning, procurement, and targeted promotions** by anticipating product-level demand. Multi-output forecasts reduce operational risk, improve stock availability, and support staffing decisions—store by store, day by day.
 
 
 ## 🚀 Features
