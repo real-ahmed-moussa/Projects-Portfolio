@@ -23,11 +23,9 @@
 ## ⚙️ Tech Stack
 | Technology     | Purpose                              |
 | -------------- | ------------------------------------ |
-| `Python`       | Core programming language            |
 | `pandas`       | Data preprocessing & transformation  |
 | `mlxtend`      | Apriori algorithm & rule mining      |
 | `matplotlib`   | Data visualization                   |
-| `networkx`     | Graph-based visualization of rules   |
 
 
 ## 📂 Project Structure

@@ -25,7 +25,6 @@
 ## ⚙️ Tech Stack
 | Technology        | Purpose                                                   |
 | ----------------- | --------------------------------------------------------- |
-| `Python`          | Core language                                             |
 | `pandas`, `numpy` | Data loading, preprocessing, feature engineering          |
 | `scikit-learn`    | `MinMaxScaler`, `train_test_split`, `mean_absolute_error` |
 | `PyTorch`         | CNN+LSTM modeling, training loop, DataLoader pipelines    |
@@ -40,7 +39,7 @@
 <pre>
 📦 Product Purchase Predictions - Machine Learning for Retail Demand
  ┣ 📜 Product_Purchase_Predictions.ipynb    # Main notebook (preprocessing, training, evaluation, visualization)
- ┣ 📜 training_testing_loss.png             # Example ROC comparison plot
+ ┣ 📜 training_testing_loss.png
  ┗ README.md
 </pre>
 
