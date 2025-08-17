@@ -8,15 +8,15 @@
  - The pipeline was developed in a **local Airflow environment** (non-containerized), focusing on **pipeline modularity and automation**.
 
 
+## 🏢 Business Impact
+This project demonstrates how **structured, automated pipelines** can streamline model development, reduce manual intervention, and increase **traceability and reproducibility**—critical steps toward production-ready ML infrastructure in real-world scenarios.
+
+
 ## 🚀 Features
 ✅ **End-to-End Workflow:** Covers data ingestion, schema validation, transformation, training, and evaluation in one orchestrated pipeline.  
 ✅ **Custom Dataset Integration:** Adapted pipeline components for real-world medical cost data.  
 ✅ **Airflow Orchestration:** DAG-based execution, logging, and task dependency management for reproducible runs.  
 ✅ **TFX Ecosystem:** Leveraged TFDV, TFT, and TFMA for scalable, standardized ML operations.  
-
-
-## 🏢 Business Impact
-   > *This project demonstrates how **structured, automated pipelines** can streamline model development, reduce manual intervention, and increase **traceability and reproducibility**—critical steps toward production-ready ML infrastructure in real-world scenarios.*
 
 
 ## ⚙️ Tech Stack
