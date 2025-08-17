@@ -3,7 +3,8 @@
 
 
 ## 📖 Overview
-This project applies **unsupervised learning** techniques to discover relationships between products purchased together. By leveraging **Apriori** and **association rule mining**, it generates interpretable rules (support, confidence, lift) that provide insights into **customer buying behavior**.  
+- This project applies **unsupervised learning** techniques to discover relationships between products purchased together.
+- By leveraging **Apriori** and **association rule mining**, it generates interpretable rules (support, confidence, lift) that provide insights into **customer buying behavior**.  
 
 
 ## 🏢 Business Impact
@@ -14,7 +15,6 @@ Association Rule Mining empowers retailers to **optimize product placement, bund
 ✅ **Market Basket Analysis**: Extracts frequent itemsets and co-occurrence patterns.  
 ✅ **Rule Mining**: Generates rules with support, confidence, and lift metrics.  
 ✅ **Actionable Insights**: Identifies product bundles for cross-selling.  
-✅ **Visualization**: Rule graphs, heatmaps, and lift plots for interpretability.  
 ✅ **Reproducible Notebook**: End-to-end workflow in a single Jupyter notebook.  
 
 
