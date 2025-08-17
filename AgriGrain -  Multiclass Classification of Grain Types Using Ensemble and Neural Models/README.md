@@ -8,10 +8,10 @@ The solution was built entirely in **R**, leveraging **ensemble algorithms** and
 
 
 ## 🚀 Features
-- ✅ **Multiple Algorithms:** Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and Artificial Neural Networks (ANNs).
-- ✅ **Automated Grain Classification:** Helps reduce manual effort in grain type identification.
-- ✅ **Multiclass Support:** Predicts multiple categories instead of binary classification.
-- ✅ **Comprehensive Evaluation:** Includes accuracy, precision, recall, and confusion matrix.
+✅ **Multiple Algorithms:** Bagging, Random Forests, Boosting, Mixture Discriminant Analysis, and Artificial Neural Networks (ANNs).  
+✅ **Automated Grain Classification:** Helps reduce manual effort in grain type identification.  
+✅ **Multiclass Support:** Predicts multiple categories instead of binary classification.  
+✅ **Comprehensive Evaluation:** Includes accuracy, precision, recall, and confusion matrix.
 
 
 ## 🏢 Business Impact

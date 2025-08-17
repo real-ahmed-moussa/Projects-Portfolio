@@ -9,10 +9,10 @@
 
 
 ## 🚀 Features
-- ✅ **End-to-End Workflow:** Covers data ingestion, schema validation, transformation, training, and evaluation in one orchestrated pipeline.
-- ✅ **Custom Dataset Integration:** Adapted pipeline components for real-world medical cost data.
-- ✅ **Airflow Orchestration:** DAG-based execution, logging, and task dependency management for reproducible runs.
-- ✅ **TFX Ecosystem:** Leveraged TFDV, TFT, and TFMA for scalable, standardized ML operations.
+✅ **End-to-End Workflow:** Covers data ingestion, schema validation, transformation, training, and evaluation in one orchestrated pipeline.  
+✅ **Custom Dataset Integration:** Adapted pipeline components for real-world medical cost data.  
+✅ **Airflow Orchestration:** DAG-based execution, logging, and task dependency management for reproducible runs.  
+✅ **TFX Ecosystem:** Leveraged TFDV, TFT, and TFMA for scalable, standardized ML operations.  
 
 
 ## 🏢 Business Impact
@@ -65,9 +65,9 @@ airflow dags trigger insurance-cost-pipeline
 
 
 ## 📊 Results
-   - **Prediction Task:** Regression model for medical insurance cost prediction.
-   - **Pipeline successfully automated** data ingestion, schema validation, transformation, training, and evaluation.
-   - **Improved reproducibility and scalability** compared to manual, notebook-based workflows.
+- **Prediction Task:** Regression model for medical insurance cost prediction.
+- **Pipeline successfully automated** data ingestion, schema validation, transformation, training, and evaluation.
+- **Improved reproducibility and scalability** compared to manual, notebook-based workflows.
 
 ## 📝 License
 This project is shared for portfolio purposes only and may not be used for commercial purposes without permission.
