@@ -5,23 +5,23 @@
 ## 📖 Overview
 This project provides a clear, modular implementation of the Transformer model in PyTorch. It can serve as an **educational reference** for understanding sequence-to-sequence architectures, attention mechanisms, and model training workflows.
 
-The notebook includes detailed class definitions for:
- - Positional Encoding
- - Multi-Head Attention
- - Feedforward Layers
- - Encoder & Decoder Blocks
- - Full Encoder–Decoder Transformer
+The notebook includes detailed class definitions for:  
+- Positional Encoding
+- Multi-Head Attention
+- Feedforward Layers
+- Encoder & Decoder Blocks
+- Full Encoder–Decoder Transformer
 
 
 ## 🚀 Features
-- ✅ **Pure PyTorch Implementation:** No reliance on pre-built Transformer classes.
-- ✅ **Educational Design:** Each subcomponent (e.g., positional encoding, attention) is implemented and explained.
-- ✅ **Customizable Architecture:** Adjust number of layers, heads, and embedding sizes.
-- ✅ **Training Loop Ready:** Compatible with PyTorch DataLoader and optimizers (Adam).
+✅ **Pure PyTorch Implementation:** No reliance on pre-built Transformer classes.  
+✅ **Educational Design:** Each subcomponent (e.g., positional encoding, attention) is implemented and explained.  
+✅ **Customizable Architecture:** Adjust number of layers, heads, and embedding sizes.  
+✅ **Training Loop Ready:** Compatible with PyTorch DataLoader and optimizers (Adam).  
 
 
 ## 🏢 Applications
-This implementation can be used to:
+This implementation can be used to:  
 - Build a translation model (e.g., English–Spanish).
 - Experiment with sequence modeling tasks (summarization, text generation).
 - Serve as a learning tool for students and practitioners studying Transformers.

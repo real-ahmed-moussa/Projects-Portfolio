@@ -8,16 +8,16 @@
 - The workflow includes **data preprocessing, model development, training, evaluation, and visualization**, enabling actionable insights for targeted marketing campaigns.
 
 
-## 🚀 Features
-- ✅ **End-to-End Workflow:** Covers dataset preparation, feature engineering, model training, evaluation, and reporting.
-- ✅ **Neural Network Architecture:** Built with TensorFlow for improved predictive power over classical models.
-- ✅ **Integrated Pipeline:** Combined scikit-learn utilities with TensorFlow for seamless preprocessing and training.
-- ✅ **Interactive Visualizations:** Used matplotlib and seaborn to provide stakeholders with interpretable insights into customer behavior.
-- ✅ **Actionable Predictions:** Outputs purchase likelihood scores to support personalized marketing campaigns.
-
-
 ## 🏢 Business Impact
-   > *PolicyPredict equips insurers with a **predictive framework to anticipate customer behavior**, enabling **data-driven targeting, improved marketing ROI, and enhanced customer experience** through timely and personalized policy recommendations.*
+PolicyPredict equips insurers with a **predictive framework to anticipate customer behavior**, enabling **data-driven targeting, improved marketing ROI, and enhanced customer experience** through timely and personalized policy recommendations.
+
+
+## 🚀 Features
+✅ **End-to-End Workflow:** Covers dataset preparation, feature engineering, model training, evaluation, and reporting.  
+✅ **Neural Network Architecture:** Built with TensorFlow for improved predictive power over classical models.  
+✅ **Integrated Pipeline:** Combined scikit-learn utilities with TensorFlow for seamless preprocessing and training.  
+✅ **Interactive Visualizations:** Used matplotlib and seaborn to provide stakeholders with interpretable insights into customer behavior.  
+✅ **Actionable Predictions:** Outputs purchase likelihood scores to support personalized marketing campaigns.  
 
 
 ## ⚙️ Tech Stack

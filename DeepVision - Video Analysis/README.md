@@ -8,15 +8,15 @@
  - The solution was developed and evaluated in a **Jupyter Notebook environment**, showcasing a complete ML pipeline from preprocessing to model training and testing *(Note: This version does not include containerization or production deployment)*.
 
 
-## 🚀 Features
-   - ✅ **ConvLSTM Architecture:** Combines CNN and LSTM layers for superior video sequence modeling.
-   - ✅ **Automated Frame Processing:** OpenCV pipeline for frame extraction, resizing, and normalization.
-   - ✅ **End-to-End ML Workflow:** Covers data preprocessing, training, evaluation, and predictions for unseen video data.
-   - ✅ **Reproducible Notebook Implementation:** Allows step-by-step review and experimentation.
-
-
 ## 🏢 Business Impact
-   > *Demonstrates the potential of AI-powered video analysis to **automate complex video review processes**, enabling applications such as **real-time quality inspection, security anomaly detection, and automated video tagging**, reducing manual review time and increasing insight accuracy.*
+Demonstrates the potential of AI-powered video analysis to **automate complex video review processes**, enabling applications such as **real-time quality inspection, security anomaly detection, and automated video tagging**, reducing manual review time and increasing insight accuracy.
+
+
+## 🚀 Features
+✅ **ConvLSTM Architecture:** Combines CNN and LSTM layers for superior video sequence modeling.  
+✅ **Automated Frame Processing:** OpenCV pipeline for frame extraction, resizing, and normalization.  
+✅ **End-to-End ML Workflow:** Covers data preprocessing, training, evaluation, and predictions for unseen video data.  
+✅ **Reproducible Notebook Implementation:** Allows step-by-step review and experimentation.  
 
 
 ## ⚙️ Tech Stack

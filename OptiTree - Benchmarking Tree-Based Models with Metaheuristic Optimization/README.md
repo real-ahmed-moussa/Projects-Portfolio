@@ -8,16 +8,16 @@
 - Experiment tracking is handled by **MLflow**, while trained models are persisted with **joblib** for reproducibility.
 
 
-## 🚀 Features
-- ✅ **Multi-Model Benchmarking:** Supports Decision Trees, Random Forests, AdaBoost, Gradient Boosting, LightGBM, XGBoost, and CatBoost classifiers.
-- ✅ **Automated Hyperparameter Optimization:** Uses PSO for efficient search across complex hyperparameter spaces.
-- ✅ **Experiment Tracking:** Logs performance metrics, parameters, and artifacts with MLflow.
-- ✅ **Model Serialization:** Stores best-performing models for later use and deployment.
-- ✅ **Reproducible Experiments:** Ensures consistent benchmarking and fair comparison across runs.
-
-
 ## 🏢 Business Impact
-   > *OptiTree provides organizations with a **scalable, automated framework for selecting and tuning tree-based models**, resulting in **higher predictive accuracy, reduced manual effort, and faster iteration cycles** for decision-critical applications such as finance, healthcare, and risk management.*
+OptiTree provides organizations with a **scalable, automated framework for selecting and tuning tree-based models**, resulting in **higher predictive accuracy, reduced manual effort, and faster iteration cycles** for decision-critical applications such as finance, healthcare, and risk management.
+
+
+## 🚀 Features
+✅ **Multi-Model Benchmarking:** Supports Decision Trees, Random Forests, AdaBoost, Gradient Boosting, LightGBM, XGBoost, and CatBoost classifiers.  
+✅ **Automated Hyperparameter Optimization:** Uses PSO for efficient search across complex hyperparameter spaces.  
+✅ **Experiment Tracking:** Logs performance metrics, parameters, and artifacts with MLflow.  
+✅ **Model Serialization:** Stores best-performing models for later use and deployment.  
+✅ **Reproducible Experiments:** Ensures consistent benchmarking and fair comparison across runs.  
 
 
 ## ⚙️ Tech Stack
@@ -74,6 +74,7 @@ jupyter notebook 'OptiTree - Benchmarking Tree-Based Models with Metaheuristic O
 - Identified top-performing model(s) with improved accuracy compared to default parameters.
 - MLflow logged all experiments for reproducibility and comparison.
 - Best model serialized for downstream use.
+
 
 ## 📝 License
 This project is shared for portfolio purposes only and may not be used for commercial purposes without permission.

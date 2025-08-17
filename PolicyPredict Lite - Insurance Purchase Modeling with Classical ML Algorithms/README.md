@@ -8,15 +8,15 @@
 - It integrates **data preprocessing, feature selection, multiple model training, and performance evaluation**, enabling rapid experimentation and actionable business insights.
 
 
-## 🚀 Features
-- ✅ **Multiple Model Evaluation:** Logistic Regression, Random Forest, and SVM compared within the same pipeline.
-- ✅ **End-to-End ML Workflow:** From raw dataset to processed features, trained models, and evaluated performance metrics.
-- ✅ **Interpretable Insights:** Feature importance and coefficients allow business teams to understand key drivers of customer purchases.
-- ✅ **Lightweight Deployment:** No specialized infrastructure required; can be run on any machine with Python installed.
-
-
 ## 🏢 Business Impact
-   > *PolicyPredict Lite empowers insurers with a **fast, interpretable, and cost-efficient predictive modeling framework**, allowing them to **prioritize leads, optimize cross-selling strategies, and improve customer outreach** without needing deep learning infrastructure.*
+PolicyPredict Lite empowers insurers with a **fast, interpretable, and cost-efficient predictive modeling framework**, allowing them to **prioritize leads, optimize cross-selling strategies, and improve customer outreach** without needing deep learning infrastructure.
+
+
+## 🚀 Features
+✅ **Multiple Model Evaluation:** Logistic Regression, Random Forest, and SVM compared within the same pipeline.  
+✅ **End-to-End ML Workflow:** From raw dataset to processed features, trained models, and evaluated performance metrics.  
+✅ **Interpretable Insights:** Feature importance and coefficients allow business teams to understand key drivers of customer purchases.  
+✅ **Lightweight Deployment:** No specialized infrastructure required; can be run on any machine with Python installed.  
 
 
 ## ⚙️ Tech Stack

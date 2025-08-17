@@ -9,17 +9,17 @@
 - The model is trained with **MSE loss** and **Adam** optimizer; performance is evaluated with **MAE/MSE** (including per-product MAE).
 
 
-## 🚀 Features
-- ✅ **Multi-Output Forecasting:** Predicts next-day demand for N products in one forward pass.
-- ✅ **Temporal Feature Engineering:** Automatic **lagged features + calendar features** (month, day-of-week, weekend).
-- ✅ **Sequence Windowing:** Converts tabular time series into (`batch, seq_len, features`) tensors.
-- ✅ CNN+LSTM Architecture: Convolutional blocks for local patterns → LSTM for temporal dynamics.
-- ✅ **GPU-Ready Training:** Seamless CPU/GPU execution with PyTorch `.to(device)`.
-- ✅ **Clear Evaluation:** Training vs. testing loss curves.
-
-
 ## 🏢 Business Impact
-> *Enable smarter **inventory planning, procurement, and targeted promotions** by anticipating product-level demand. Multi-output forecasts reduce operational risk, improve stock availability, and support staffing decisions—store by store, day by day.*
+*Enable smarter **inventory planning, procurement, and targeted promotions** by anticipating product-level demand. Multi-output forecasts reduce operational risk, improve stock availability, and support staffing decisions—store by store, day by day.
+
+
+## 🚀 Features
+✅ **Multi-Output Forecasting:** Predicts next-day demand for N products in one forward pass.  
+✅ **Temporal Feature Engineering:** Automatic **lagged features + calendar features** (month, day-of-week, weekend).  
+✅ **Sequence Windowing:** Converts tabular time series into (`batch, seq_len, features`) tensors.  
+✅ CNN+LSTM Architecture: Convolutional blocks for local patterns → LSTM for temporal dynamics.  
+✅ **GPU-Ready Training:** Seamless CPU/GPU execution with PyTorch `.to(device)`.  
+✅ **Clear Evaluation:** Training vs. testing loss curves.  
 
 
 ## ⚙️ Tech Stack

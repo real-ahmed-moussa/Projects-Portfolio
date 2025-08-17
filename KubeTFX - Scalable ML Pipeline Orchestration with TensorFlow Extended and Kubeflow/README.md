@@ -8,15 +8,15 @@
 - Focused on **scalable orchestration, Kubernetes-native execution, and infrastructure-as-code practices** to bridge local development and cloud deployment readiness.
 
 
-## 🚀 Features
-- ✅ **End-to-End Orchestration:** Automates ingestion, schema validation, data transformation, model training, and evaluation under Kubeflow Pipelines.
-- ✅ **Kubernetes-Native Execution:** Uses Minikube for local testing of scalable, cloud-compatible workflows.
-- ✅ **Modular and Portable Design:** Dockerized components with YAML-based configuration for seamless reuse and portability.
-- ✅ **TFX Ecosystem Integration:** Leverages TFDV, TFT, and TFMA for data validation, transformation, and model analysis.
-
-
 ## 🏢 Business Impact
-   > *This project demonstrates how Kubernetes-based orchestration improves **scalability, reproducibility, and deployment readiness** in machine learning pipelines, accelerating the path from development to production while ensuring reliable, auditable workflows.*
+This project demonstrates how Kubernetes-based orchestration improves **scalability, reproducibility, and deployment readiness** in machine learning pipelines, accelerating the path from development to production while ensuring reliable, auditable workflows.
+
+
+## 🚀 Features
+✅ **End-to-End Orchestration:** Automates ingestion, schema validation, data transformation, model training, and evaluation under Kubeflow Pipelines.  
+✅ **Kubernetes-Native Execution:** Uses Minikube for local testing of scalable, cloud-compatible workflows.  
+✅ **Modular and Portable Design:** Dockerized components with YAML-based configuration for seamless reuse and portability.  
+✅ **TFX Ecosystem Integration:** Leverages TFDV, TFT, and TFMA for data validation, transformation, and model analysis.  
 
 
 ## ⚙️ Tech Stack
@@ -31,7 +31,6 @@
 | `TF Transform (TFT)`        | Applies consistent preprocessing for training and serving          |
 | `TF Model Analysis (TFMA)`  | Evaluates model performance using configurable metrics and slicing |
 | `SQLite`                    | Stores pipeline metadata for reproducibility and traceability      |
-
 
 
 ## 📂 Project Structure
@@ -87,6 +86,7 @@ minikube service ml-pipeline-ui -n kubeflow
 - **Prediction Task:** Regression model for medical insurance cost prediction.
 - **Containerized, Portable Pipeline:** Validated on local Kubernetes cluster.
 - **Cloud-ready Orchestration:** Demonstrated scalable, reproducible ML workflow management for real-world deployment scenarios.
+
 
 ## 📝 License
 This project is shared for portfolio purposes only and may not be used for commercial purposes without permission.

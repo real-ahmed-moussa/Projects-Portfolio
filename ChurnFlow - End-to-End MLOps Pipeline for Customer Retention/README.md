@@ -3,20 +3,20 @@
 
 
 ## 📖 Overview
- - **ChurnFlow** implements a complete machine learning lifecycle for customer churn prediction in a telecom business context.
- - The project demonstrates expertise in **MLOps, automation, and real-time model serving**, integrating continuous monitoring and retraining for long-term reliability.
- - The pipeline was **containerized using Docker** and automated with **GitHub Actions**, ensuring seamless deployment and scalability.
-
-
-## 🚀 Features
-   - ✅ **Real-Time Model Serving:** FastAPI-based REST API for on-demand churn predictions.
-   - ✅ **CI/CD Automation:** GitHub Actions for automatic builds, testing, and deployment.
-   - ✅ **Drift Detection & Retraining:** EvidentlyAI triggers model retraining when data or prediction drift is detected.
-   - ✅ **Experiment Tracking:** MLflow for model performance logging and version control.
+- **ChurnFlow** implements a complete machine learning lifecycle for customer churn prediction in a telecom business context.
+- The project demonstrates expertise in **MLOps, automation, and real-time model serving**, integrating continuous monitoring and retraining for long-term reliability.
+- The pipeline was **containerized using Docker** and automated with **GitHub Actions**, ensuring seamless deployment and scalability.
 
 
 ## 🏢 Business Impact
-   > *This pipeline significantly reduced the time-to-deployment and maintenance overhead for predictive models, enabling proactive customer retention strategies. Telecom teams could identify at-risk customers early, reducing churn rates and improving overall customer lifetime value.*
+This pipeline significantly reduced the time-to-deployment and maintenance overhead for predictive models, enabling proactive customer retention strategies. Telecom teams could identify at-risk customers early, reducing churn rates and improving overall customer lifetime value.
+
+
+## 🚀 Features
+✅ **Real-Time Model Serving:** FastAPI-based REST API for on-demand churn predictions.  
+✅ **CI/CD Automation:** GitHub Actions for automatic builds, testing, and deployment.  
+✅ **Drift Detection & Retraining:** EvidentlyAI triggers model retraining when data or prediction drift is detected.  
+✅ **Experiment Tracking:** MLflow for model performance logging and version control.  
 
 
 ## ⚙️ Tech Stack
