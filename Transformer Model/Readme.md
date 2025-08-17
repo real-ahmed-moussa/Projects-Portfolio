@@ -35,7 +35,8 @@ This implementation can be used to:
 
 
 ## Original Transformer Architecture
-![Original Transformer Architecture - Attention Is All You Need](Original_Transformer_Arch.png)
+Figure is from the original Attention Is All You Need paper (see references).
+![Original Transformer Architecture](Original_Transformer_Arch.png)
 
 
 ## 📂 Project Structure
