@@ -1,0 +1,35 @@
+services:
+  api:
+    build: { context: ., dockerfile: docker/api.Dockerfile }
+    container_name: churn_api
+    environment:
+      APP_BASE: /app
+      MONITOR_URL: http://monitor:8001
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      MLFLOW_EXPERIMENT_NAME: ChurnFlow
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./mlruns:/mlruns
+    ports: ["8000:8000"]
+    depends_on: [monitor, mlflow]
+
+  monitor:
+    build: { context: ., dockerfile: docker/monitor.Dockerfile }
+    container_name: churn_monitor
+    environment:
+      APP_BASE: /app
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+      - ./mlruns:/mlruns
+    ports: ["8001:8001"]
+
+  mlflow:
+    build: { context: ., dockerfile: docker/mlflow.Dockerfile }
+    container_name: mlflow_server
+    volumes:
+      - ./mlruns:/mlruns
+    ports: ["5000:5000"]

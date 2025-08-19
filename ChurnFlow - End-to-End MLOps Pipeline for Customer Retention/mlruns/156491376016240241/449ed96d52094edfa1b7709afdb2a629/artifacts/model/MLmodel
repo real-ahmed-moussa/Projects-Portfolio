@@ -1,0 +1,67 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.8
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+is_signature_from_type_hint: false
+mlflow_version: 2.20.4
+model_size_bytes: 5419
+model_uuid: d629d10f7ba64f6e9f8c7374cb679772
+run_id: 449ed96d52094edfa1b7709afdb2a629
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "num__tenure", "required": true}, {"type":
+    "double", "name": "num__MonthlyCharges", "required": true}, {"type": "double",
+    "name": "num__TotalCharges", "required": true}, {"type": "double", "name": "cat__gender_0",
+    "required": true}, {"type": "double", "name": "cat__gender_1", "required": true},
+    {"type": "double", "name": "cat__Partner_0", "required": true}, {"type": "double",
+    "name": "cat__Partner_1", "required": true}, {"type": "double", "name": "cat__Dependents_0",
+    "required": true}, {"type": "double", "name": "cat__Dependents_1", "required":
+    true}, {"type": "double", "name": "cat__PhoneService_0", "required": true}, {"type":
+    "double", "name": "cat__PhoneService_1", "required": true}, {"type": "double",
+    "name": "cat__MultipleLines_0", "required": true}, {"type": "double", "name":
+    "cat__MultipleLines_1", "required": true}, {"type": "double", "name": "cat__MultipleLines_2",
+    "required": true}, {"type": "double", "name": "cat__InternetService_0", "required":
+    true}, {"type": "double", "name": "cat__InternetService_1", "required": true},
+    {"type": "double", "name": "cat__InternetService_2", "required": true}, {"type":
+    "double", "name": "cat__OnlineSecurity_0", "required": true}, {"type": "double",
+    "name": "cat__OnlineSecurity_1", "required": true}, {"type": "double", "name":
+    "cat__OnlineSecurity_2", "required": true}, {"type": "double", "name": "cat__OnlineBackup_0",
+    "required": true}, {"type": "double", "name": "cat__OnlineBackup_1", "required":
+    true}, {"type": "double", "name": "cat__OnlineBackup_2", "required": true}, {"type":
+    "double", "name": "cat__DeviceProtection_0", "required": true}, {"type": "double",
+    "name": "cat__DeviceProtection_1", "required": true}, {"type": "double", "name":
+    "cat__DeviceProtection_2", "required": true}, {"type": "double", "name": "cat__TechSupport_0",
+    "required": true}, {"type": "double", "name": "cat__TechSupport_1", "required":
+    true}, {"type": "double", "name": "cat__TechSupport_2", "required": true}, {"type":
+    "double", "name": "cat__StreamingTV_0", "required": true}, {"type": "double",
+    "name": "cat__StreamingTV_1", "required": true}, {"type": "double", "name": "cat__StreamingTV_2",
+    "required": true}, {"type": "double", "name": "cat__StreamingMovies_0", "required":
+    true}, {"type": "double", "name": "cat__StreamingMovies_1", "required": true},
+    {"type": "double", "name": "cat__StreamingMovies_2", "required": true}, {"type":
+    "double", "name": "cat__Contract_0", "required": true}, {"type": "double", "name":
+    "cat__Contract_1", "required": true}, {"type": "double", "name": "cat__Contract_2",
+    "required": true}, {"type": "double", "name": "cat__PaperlessBilling_0", "required":
+    true}, {"type": "double", "name": "cat__PaperlessBilling_1", "required": true},
+    {"type": "double", "name": "cat__PaymentMethod_0", "required": true}, {"type":
+    "double", "name": "cat__PaymentMethod_1", "required": true}, {"type": "double",
+    "name": "cat__PaymentMethod_2", "required": true}, {"type": "double", "name":
+    "cat__PaymentMethod_3", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-08-19 17:59:21.796169'

@@ -1,0 +1,16 @@
+{
+  "confusion_matrix_labels": [
+    0,
+    1
+  ],
+  "confusion_matrix": [
+    [
+      740,
+      295
+    ],
+    [
+      82,
+      292
+    ]
+  ]
+}

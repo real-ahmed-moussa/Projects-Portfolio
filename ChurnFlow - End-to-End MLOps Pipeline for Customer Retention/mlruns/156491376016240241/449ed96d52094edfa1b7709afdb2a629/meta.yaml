@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ahmedmoussa/training-files/mlops_ppln/ppln/mlruns/156491376016240241/449ed96d52094edfa1b7709afdb2a629/artifacts
+end_time: 1755626365132
+entry_point_name: ''
+experiment_id: '156491376016240241'
+lifecycle_stage: active
+run_id: 449ed96d52094edfa1b7709afdb2a629
+run_name: logreg_baseline
+run_uuid: 449ed96d52094edfa1b7709afdb2a629
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755626361577
+status: 3
+tags: []
+user_id: ahmedmoussa
