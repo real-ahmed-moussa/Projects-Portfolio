@@ -60,7 +60,7 @@ airflow scheduler &
 
 3️⃣ **Trigger Pipeline DAG**
 <pre>
-airflow dags trigger insurance-cost-pipeline
+airflow dags trigger tfx_pipeline_dag
 </pre>
 
 
