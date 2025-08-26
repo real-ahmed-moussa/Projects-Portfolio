@@ -22,7 +22,6 @@ This project demonstrates how Kubernetes-based orchestration improves **scalabil
 ## ⚙️ Tech Stack
 | Technology                  | Purpose                                                            |
 | --------------------------- | ------------------------------------------------------------------ |
-| `Python`                    | Core programming language                                          |
 | `TensorFlow Extended (TFX)` | Standardized ML pipeline framework                                 |
 | `Kubeflow Pipelines`        | Orchestrates pipeline execution and task scheduling                |
 | `Minikube`                  | Local Kubernetes cluster simulation                                |
@@ -41,7 +40,11 @@ This project demonstrates how Kubernetes-based orchestration improves **scalabil
  ┣ 📜 base_pipeline.py        # Core pipeline definition (TFX DAG) 
  ┣ 📜 pipeline_run.py         # Script to compile & submit pipeline to Kubeflow
  ┣ 📜 pv.yaml                 # Persistent Volume definition for Minikube
- ┣ 📜 pvc.yaml                # Persistent Volume Claim for data storage 
+ ┣ 📜 pvc.yaml                # Persistent Volume Claim for data storage
+ ┣ 📜 pipeline_graph.png
+ ┣ 📜 succ_run.png
+ ┣ 📜 minikube_stats.png       
+ ┣ 📜 pods_state.png             
  ┗ README.md
 </pre>
 
@@ -53,33 +56,113 @@ git clone https://github.com/ahmedmoussa/Projects-Portfolio.git
 cd 'KubeTFX - Scalable ML Pipeline Orchestration with TensorFlow Extended and Kubeflow'
 </pre>
 
-2️⃣ **Start Minikube Cluster**
+2️⃣ **Activate the Kubeflow Environment**
 <pre>
-minikube start --cpus=4 --memory=8192
+source kf_env/bin/activate
 </pre>
 
-3️⃣ **Apply Persistent Volumes (PV/PVC)**
-<pre>
-kubectl apply -f pv.yaml
-kubectl apply -f pvc.yaml
-</pre>
-
-4️⃣ **Ensure Kubeflow Pipelines is running**
-- Install via Kubeflow manifests or MiniKF.
-- Verify:
-<pre>
-kubectl get pods -n kubeflow
-</pre>
-
-5️⃣ **Compile and submit Pipeline**
+3️⃣ **Compile and submit Pipeline**
 <pre>
 python pipeline_run.py
 </pre>
 - The compiled YAML will be saved under `pl_yaml_output/` and submitted to the Kubeflow Pipelines UI.
-- Access Kubeflow Pipelines Dashboard:
-<pre>
-minikube service ml-pipeline-ui -n kubeflow
-</pre>
+
+
+## 🧭 Run Steps (Minikube + Kubeflow Pipelines)
+
+The following commands reproduce my local run on **Minikube with Kubeflow Pipelines**.
+
+### [1] Install `kubectl`, `kustomize`, and `minikube`
+
+### [2] Check Docker
+```bash
+# Docker reachable?
+docker ps                                               
+
+# What does kubectl point to?
+kubectl config current-context                          
+kubectl cluster-info
+```
+
+### [3] Make Sure Minikube is Running
+```bash
+# Nuke any broken cluster
+minikube delete --all --purge
+
+# Fresh start with enough resources (Docker driver in WSL)
+minikube start --driver=docker --cpus=4 --memory=8192   
+
+# Ensure kubectl is pointing to the new cluster
+kubectl config use-context minikube                     
+minikube update-context
+
+# Verify node & API
+kubectl get nodes                                       
+kubectl cluster-info
+```
+
+### [4] Install Kubeflow Pipelines (Standalone)
+```bash
+export PIPELINE_VERSION=2.14.0
+
+# (1) Cluster-scoped resources
+kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
+
+# (2) Namespace-scoped resources
+kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic?ref=$PIPELINE_VERSION"
+
+# (Alt dev env)
+# kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/dev?ref=$PIPELINE_VERSION"
+```
+
+### [5] Wait for Pods to be Ready
+```bash
+kubectl get pods -n kubeflow -w
+```
+
+### [6] Create the PV + PVC
+```bash
+# Apply PV mounting
+kubectl apply -f pv.yaml
+kubectl apply -f pvc.yaml
+
+# Check PV mounting
+kubectl get pv tfx-pv
+kubectl -n kubeflow get pvc tfx-pvc
+```
+
+### [7] Access the Kubeflow Pipelines UI
+```bash
+kubectl port-forward -n kubeflow svc/ml-pipeline-ui 8080:80
+```
+
+### [8] Copy Files to the Minikube Running Container
+```bash
+# Create the folder inside Minikube container - Should match the path specified in the `PV.yaml` and `tfx_pipeline_kubeflow.yaml` files.
+minikube ssh -- 'sudo mkdir -p /home/ahmedmoussa/kf_tfx/pl_comps && sudo chown -R docker:docker /home/ahmedmoussa'
+
+# Copy the Files
+docker cp /home/ahmedmoussa/kf_tfx/pl_comps/. \                     # Location of pipeline files on your system as in the `pl_comps` folder
+  minikube:/home/ahmedmoussa/kf_tfx/pl_comps/                       # Location of pipelines files inside the Minikube container
+```
+
+### 📷 Screenshots
+
+- **Pipeline Graph (compiled TFX pipeline in KFP UI):**
+
+  ![KFP Graph](images/pipeline_graph.png)
+
+- **Successful Run (all components green):**
+
+  ![KFP Run Successful](images/succ_run.png)
+
+- **Minikube Resource Stats during Run:**
+
+  ![Minikube Stats](images/minikube_stats.png)
+
+- **Pods State in `kubeflow` Namespace:**
+
+  ![Kubeflow Pods](images/pods_state.png)
 
 
 ## 📊 Results

@@ -12,5 +12,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: standard
   hostPath:
-    path: /home/ahmedmoussa/training-files/ml-pipeline/us_pl3
+    path: /home/ahmedmoussa/kf_tfx/pl_comps
   

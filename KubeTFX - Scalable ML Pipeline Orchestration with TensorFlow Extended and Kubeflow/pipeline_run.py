@@ -15,11 +15,11 @@ pipeline_name = "tfx_pipeline_kubeflow"
 
 persistent_volume_claim = "tfx-pvc"                                                                     # Name of the PVC
 persistent_volume = "tfx-pv"                                                                            # Name of the volume
-persistent_volume_mount = "/path/to/pipeline/files/pl_comps"                                            # This path must exist in your container
+persistent_volume_mount = "/home/ahmedmoussa/kf_tfx/pl_comps"                                           # This path must exist in your Minikube container
 
 #  .yaml file for Kubeflow Pipelines
 output_filename = f"{pipeline_name}.yaml"                                                               # Name of the output .yaml file that will be loaded into Kubeflow Pipelines
-output_dir = "/path/to/the/output/directory/pl_yaml_output"                                             # This path must exist in your container
+output_dir = "/home/ahmedmoussa/kf_tfx/pl_yaml_output"                                                  # This path must exist in your Minikube container
 
 # [2] Pipeline Inputs
 data_dir = os.path.join(persistent_volume_mount, "data")                                                # Path to the data directory
