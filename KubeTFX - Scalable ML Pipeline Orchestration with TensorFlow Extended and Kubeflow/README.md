@@ -148,21 +148,21 @@ docker cp /home/ahmedmoussa/kf_tfx/pl_comps/. \                     # Location o
 
 ## 📷 Screenshots
 
-- **Pipeline Graph (compiled TFX pipeline in KFP UI):**
+### Pipeline Graph (compiled TFX pipeline in KFP UI)
 
-![KFP Graph](pipeline_graph.png)
+  ![KFP Graph](pipeline_graph.png)
 
-- **Successful Run (all components green):**
+### Successful Run (all components green)
 
-![KFP Run Successful](succ_run.png)
+  ![KFP Run Successful](succ_run.png)
 
-- **Minikube Resource Stats during Run:**
+### Minikube Resource Stats during Run
 
-![Minikube Stats](minikube_stats.png)
+  ![Minikube Stats](minikube_stats.png)
 
-- **Pods State in `kubeflow` Namespace:**
+### Pods State in `kubeflow` Namespace
 
-![Kubeflow Pods](pods_state.png)
+  ![Kubeflow Pods](pods_state.png)
 
 
 ## 📊 Results
