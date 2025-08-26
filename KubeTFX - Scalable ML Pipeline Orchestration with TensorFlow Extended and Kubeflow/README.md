@@ -146,23 +146,23 @@ docker cp /home/ahmedmoussa/kf_tfx/pl_comps/. \                     # Location o
   minikube:/home/ahmedmoussa/kf_tfx/pl_comps/                       # Location of pipelines files inside the Minikube container
 ```
 
-### 📷 Screenshots
+## 📷 Screenshots
 
 - **Pipeline Graph (compiled TFX pipeline in KFP UI):**
 
-  ![KFP Graph](images/pipeline_graph.png)
+![KFP Graph](pipeline_graph.png)
 
 - **Successful Run (all components green):**
 
-  ![KFP Run Successful](images/succ_run.png)
+![KFP Run Successful](succ_run.png)
 
 - **Minikube Resource Stats during Run:**
 
-  ![Minikube Stats](images/minikube_stats.png)
+![Minikube Stats](minikube_stats.png)
 
 - **Pods State in `kubeflow` Namespace:**
 
-  ![Kubeflow Pods](images/pods_state.png)
+![Kubeflow Pods](pods_state.png)
 
 
 ## 📊 Results
