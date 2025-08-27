@@ -81,7 +81,7 @@ airflow dags trigger tfx_pipeline_dag
 
 ### Pipeline Run Log (sample)
 
-  ![PPR Graph](ppln_run_og.png)
+  ![PPR Graph](ppln_run_log.png)
 
 ### Successful Pipeline Run
 
