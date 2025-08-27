@@ -146,7 +146,7 @@ docker cp /home/ahmedmoussa/kf_tfx/pl_comps/. \                     # Location o
   minikube:/home/ahmedmoussa/kf_tfx/pl_comps/                       # Location of pipelines files inside the Minikube container
 ```
 
-## 📷 Screenshots
+## 📷 Pipeline Runs
 
 ### Pipeline Graph (compiled TFX pipeline in KFP UI)
 

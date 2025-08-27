@@ -6,6 +6,7 @@
  - This project implements a **TFX-based ML pipeline** for **medical insurance cost prediction**, orchestrated with Apache Airflow to enable automated and repeatable workflows.
 - Unlike the original reference implementation from "Building Machine Learning Pipelines" (Hapke & Nelson, 2020), this version uses a **custom dataset** and tailored preprocessing, feature engineering, and evaluation steps to showcase applied MLOps skills.
  - The pipeline was developed in a **local Airflow environment** (non-containerized), focusing on **pipeline modularity and automation**.
+ - Due to compatibility issues between Airflow and TFX installations, the TFX pipeline was created separately. A dedicated virtual environment was then invoked from within Airflow to execute the compiled pipeline file, as defined in the `TFX_Pipeline_DAG.py` script.
 
 
 ## 🏢 Business Impact
@@ -39,6 +40,9 @@ This project demonstrates how **structured, automated pipelines** can streamline
  ┣ 📜 base_pipeline.py
  ┣ 📜 module.py
  ┣ 📜 pipeline_run.py
+ ┣ 📜 ppln_dag.png
+ ┣ 📜 ppln_run_log.png
+ ┣ 📜 ppln_succ_run.png
  ┗ README.md
 </pre>
 
@@ -52,16 +56,36 @@ cd 'AirflowTFX - Reproducible ML Pipeline Orchestration with TensorFlow Extended
 
 2️⃣ **Setup Airflow Environment**
 <pre>
+source airflow_venv/bin/activate                            # Path to virtual environment where you installed airflow
+
 export AIRFLOW_HOME=~/airflow
-airflow db init
-airflow webserver &
-airflow scheduler &
+mkdir -p "$AIRFLOW_HOME/dags" "$AIRFLOW_HOME/logs"          # Create `dags` and `logs` folders
+
+airflow db init                                             # Initialize airflow db
+
+airflow scheduler                                           # Run airflow scheduler (in terminal 1)
+
+airflow webserver --port 8080                               # Run airflow webserver (in terminal 2)
 </pre>
 
 3️⃣ **Trigger Pipeline DAG**
 <pre>
 airflow dags trigger tfx_pipeline_dag
 </pre>
+
+
+## 📂 Pipeline Runs
+### Pipeline DAG (compiled TFX pipeline in Airflow UI)
+
+  ![AF Graph](ppln_dag.png)
+
+### Pipeline Run Log (sample)
+
+  ![PPR Graph](ppln_run_og.png)
+
+### Successful Pipeline Run
+
+  ![PPR Graph](ppln_succ_run.png)
 
 
 ## 📊 Results
