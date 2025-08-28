@@ -31,7 +31,7 @@ Demonstrates the potential of AI-powered video analysis to **automate complex vi
 
 
 ## 🧠 Model Architecture
-![Model Architecture](convlstm_architecture.png)
+![Model Architecture](imgs/convlstm_architecture.png)
 
 
 ## 📂 Project Structure
@@ -39,7 +39,7 @@ Demonstrates the potential of AI-powered video analysis to **automate complex vi
 📦 DeepVision - Video Analysis 
  ┣ 📂 models         
  ┣ 📂 notebooks
- ┣ 📜 convlstm_architecture.png 
+ ┣ 📂 imgs
  ┣ README.md
  ┗ Requirements.txt
 </pre>

@@ -37,14 +37,11 @@ This project demonstrates how Kubernetes-based orchestration improves **scalabil
 📦 KubeTFX - Scalable ML Pipeline Orchestration with TensorFlow Extended and Kubeflow
  ┣ 📂 pl_comps                # Custom pipeline components (TFX modules) 
  ┣ 📂 pl_yaml_output          # Compiled Kubeflow pipeline YAML outputs 
+ ┣ 📂 imgs
  ┣ 📜 base_pipeline.py        # Core pipeline definition (TFX DAG) 
  ┣ 📜 pipeline_run.py         # Script to compile & submit pipeline to Kubeflow
  ┣ 📜 pv.yaml                 # Persistent Volume definition for Minikube
  ┣ 📜 pvc.yaml                # Persistent Volume Claim for data storage
- ┣ 📜 pipeline_graph.png
- ┣ 📜 succ_run.png
- ┣ 📜 minikube_stats.png       
- ┣ 📜 pods_state.png             
  ┗ README.md
 </pre>
 
@@ -150,19 +147,19 @@ docker cp /home/ahmedmoussa/kf_tfx/pl_comps/. \                     # Location o
 
 ### Pipeline Graph (compiled TFX pipeline in KFP UI)
 
-  ![KFP Graph](pipeline_graph.png)
+  ![KFP Graph](imgs/pipeline_graph.png)
 
 ### Successful Run (all components green)
 
-  ![KFP Run Successful](succ_run.png)
+  ![KFP Run Successful](imgs/succ_run.png)
 
 ### Minikube Resource Stats during Run
 
-  ![Minikube Stats](minikube_stats.png)
+  ![Minikube Stats](imgs/minikube_stats.png)
 
 ### Pods State in `kubeflow` Namespace
 
-  ![Kubeflow Pods](pods_state.png)
+  ![Kubeflow Pods](imgs/pods_state.png)
 
 
 ## 📊 Results

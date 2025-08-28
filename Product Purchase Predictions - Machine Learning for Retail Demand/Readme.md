@@ -32,12 +32,13 @@ Enable smarter **inventory planning, procurement, and targeted promotions** by a
 
 
 ## Training vs. Testing Loss Curve
-![Training vs. Testing Loss Curve](training_testing_loss.png)
+![Training vs. Testing Loss Curve](imgs/training_testing_loss.png)
 
 
 ## 📂 Project Structure
 <pre>
 📦 Product Purchase Predictions - Machine Learning for Retail Demand
+ ┣ 📂 imgs
  ┣ 📜 Product_Purchase_Predictions.ipynb    # Main notebook (preprocessing, training, evaluation, visualization)
  ┣ 📜 training_testing_loss.png
  ┗ README.md

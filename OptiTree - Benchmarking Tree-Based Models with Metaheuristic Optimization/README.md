@@ -34,12 +34,13 @@ OptiTree provides organizations with a **scalable, automated framework for selec
 
 
 ## Models Performance Summary
-![Models Performance Summary](models_comparison.png)
+![Models Performance Summary](imgs/models_comparison.png)
 
 
 ## 📂 Project Structure
 <pre>
 📦 OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization
+ ┣ 📂imgs
  ┣ 📜 OptiTree - Benchmarking Tree-Based Models with Metaheuristic Optimization.ipynb    # Main notebook (data preprocessing, training, optimization, results)
  ┣ 📜 models_comparison.png
  ┣ requirements.txt
