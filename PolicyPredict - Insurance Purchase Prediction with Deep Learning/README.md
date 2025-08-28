@@ -42,10 +42,10 @@ PolicyPredict equips insurers with a **predictive framework to anticipate custom
 </pre>
 
 ## 📊 Curves
-### Confusion Matrix
+### [1] Confusion Matrix
 ![Confusion Matrix](imgs/conf_mat.png)
 
-### ROC Curve
+### [2] ROC Curve
 ![ROC Curve](imgs/roc.png)
 
 
