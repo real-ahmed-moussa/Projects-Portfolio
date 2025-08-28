@@ -37,12 +37,10 @@ This project demonstrates how **structured, automated pipelines** can streamline
 📦 AirflowTFX - Reproducible ML Pipeline Orchestration with TensorFlow Extended (TFX)
  ┣ 📂 Airflow
  ┣ 📂 data
+ ┣ 📂 imgs
  ┣ 📜 base_pipeline.py
  ┣ 📜 module.py
  ┣ 📜 pipeline_run.py
- ┣ 📜 ppln_dag.png
- ┣ 📜 ppln_run_log.png
- ┣ 📜 ppln_succ_run.png
  ┗ README.md
 </pre>
 
@@ -77,15 +75,15 @@ airflow dags trigger tfx_pipeline_dag
 ## 📂 Pipeline Runs
 ### Pipeline DAG (compiled TFX pipeline in Airflow UI)
 
-  ![AF Graph](ppln_dag.png)
+  ![AF Graph](imgs/ppln_dag.png)
 
 ### Pipeline Run Log (sample)
 
-  ![PPR Graph](ppln_run_log.png)
+  ![PPR Graph](imgs/ppln_run_log.png)
 
 ### Successful Pipeline Run
 
-  ![PPR Graph](ppln_succ_run.png)
+  ![PPR Graph](imgs/ppln_succ_run.png)
 
 
 ## 📊 Results
