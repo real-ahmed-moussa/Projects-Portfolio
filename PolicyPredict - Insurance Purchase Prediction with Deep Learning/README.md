@@ -35,10 +35,18 @@ PolicyPredict equips insurers with a **predictive framework to anticipate custom
 ## 📂 Project Structure
 <pre>
 📦 PolicyPredict - Insurance Purchase Prediction with Deep Learning
+ ┣ 📂 imgs
  ┣ 📜 PolicyPredict - Insurance Purchase Prediction with Deep Learning.ipynb    # Main notebook (data preprocessing, model training, evaluation)
  ┣ requirements.txt
  ┗ README.md
 </pre>
+
+## 📊 Curves
+### Confusion Matrix
+    ![Confusion Matrix](imgs/conf_mat.png)
+
+### ROC Curve
+    ![ROC Curve](imgs/roc.png)
 
 
 ## 🛠️ Installation
@@ -62,7 +70,7 @@ jupyter notebook 'PolicyPredict - Insurance Purchase Prediction with Deep Learni
 
 
 ## 📊 Results
-- Trained a deep learning model that successfully predicted customer purchase intent with high accuracy and reliability.
+- Trained a deep learning model that successfully predicted customer purchase intent with 70% accuracy and 85% ROC-AUC.
 - Generated visual insights into influential features and customer behavior patterns.
 - Delivered a **scalable, reusable pipeline** for future policy recommendation use cases.
 
