@@ -32,16 +32,17 @@ PolicyPredict Lite empowers insurers with a **fast, interpretable, and cost-effi
 <pre>
 📦 PolicyPredict Lite - Insurance Purchase Modeling with Classical ML Algorithms
  ┣ 📜 PolicyPredict Lite - Insurance Purchase Modeling with Classical ML Algorithms.ipynb    # Main notebook (data preprocessing, model training, evaluation)
+ ┣ 📂 imgs
  ┣ requirements.txt
  ┗ README.md
 </pre>
 
 ## 🚀 ROC Curves
 ### Logistic Regression
-![ROC Curve](imgs/roc_reg.png.png)
+  ![ROC Curve](imgs/roc_reg.png.png)
 
 ### Random Forests
-![ROC Curve](imgs/roc_rf.png.png)
+  ![ROC Curve](imgs/roc_rf.png.png)
 
 
 ## 🛠️ Installation
