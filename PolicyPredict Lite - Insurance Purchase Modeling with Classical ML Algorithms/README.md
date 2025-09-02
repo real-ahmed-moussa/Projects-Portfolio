@@ -36,6 +36,13 @@ PolicyPredict Lite empowers insurers with a **fast, interpretable, and cost-effi
  ┗ README.md
 </pre>
 
+## 🚀 ROC Curves
+### Logistic Regression
+![ROC Curve](imgs/roc_reg.png.png)
+
+### Random Forests
+![ROC Curve](imgs/roc_rf.png.png)
+
 
 ## 🛠️ Installation
 1️⃣ **Clone the Repository**
