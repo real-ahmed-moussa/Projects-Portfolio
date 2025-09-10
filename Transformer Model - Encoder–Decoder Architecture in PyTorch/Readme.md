@@ -42,8 +42,8 @@ Figure is from the original ***Attention Is All You Need*** paper (see the refer
 ## 📂 Project Structure
 <pre>
 📦 Transformer Model - Encoder–Decoder Architecture in PyTorch
+ ┣ 📂 imgs
  ┣ 📜 Transformer_Model.ipynb          # Jupyter Notebook with full implementation
- ┣ 📜 Original_Transformer_Arch.png
  ┗ README.md               
 </pre>
 
