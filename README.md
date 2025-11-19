@@ -3,7 +3,7 @@
 A curated collection of my machine learning and AI projects. Each project demonstrates real-world applications of data science, MLOps, and AI engineering.
  > ⚠️ Only non-confidential projects are included.
 
- ![Portfolio Map](portfolio_map.png)
+ ![Portfolio Map](port_map.png)
 
 ## 🗂️ Projects Overview
 | Project                                                  | Description                                                                                                                                   | Tech Stack                                                                     | Links                                 |
