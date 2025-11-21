@@ -32,6 +32,7 @@ This solution enhanced the **accuracy and efficiency** of grain classification, 
 ## 📂 Project Structure
 <pre>
 📦 AgriGrain -  Multiclass Classification of Grain Types Using Ensemble and Neural Models
+ ┣ 📂 imgs
  ┣ 📜 Multiclass Classification of Grain Types Using Ensemble and Neural Models.R
  ┗ README.md
 </pre>
