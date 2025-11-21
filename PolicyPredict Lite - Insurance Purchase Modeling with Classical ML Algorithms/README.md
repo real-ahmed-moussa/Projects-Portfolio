@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/Policy Predict Lite.png" alt="PPL" width="300">
+</p>
+
 # 📌 PolicyPredict Lite: Insurance Purchase Modeling with Classical ML Algorithms
 > Lightweight machine learning solution leveraging classical models to predict customer purchase behavior for insurance policies, providing fast and interpretable insights to support marketing and sales strategies.
 
