@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/Policy Predict.png" alt="PP" width="300">
+</p>
+
 # 📌 PolicyPredict: Insurance Purchase Prediction with Deep Learning
 > End-to-end machine learning solution leveraging a fully connected neural network to predict customer likelihood of purchasing new insurance policies, improving marketing strategies and customer engagement.
 
