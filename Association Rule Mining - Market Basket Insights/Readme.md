@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/Association Rule Mining.png" alt="ARM" width="300">
+</p>
+
 # 📌 Association Rule Mining: Market Basket Insights
 > A retail analytics project applying association rule mining to uncover hidden product co-purchasing patterns, enabling smarter cross-selling, bundling, and promotion strategies.
 
@@ -29,6 +33,7 @@ Association Rule Mining empowers retailers to **optimize product placement, bund
 ## 📂 Project Structure
 <pre>
 📦 Association Rule Mining
+ ┣ 📂 imgs
  ┣ 📜 Association_Rule_Mining.ipynb     # Main notebook (data preprocessing, Apriori, rules, visualizations)
  ┗ README.md
 </pre>
