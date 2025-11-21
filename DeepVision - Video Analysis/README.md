@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/DeepVision.png" alt="DV" width="300">
+</p>
+
 # 📌 DeepVision: Video Analysis
 > A deep learning solution for automated video content analysis using a ConvLSTM-based classification model.
 
