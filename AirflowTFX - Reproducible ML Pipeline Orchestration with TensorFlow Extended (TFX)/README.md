@@ -1,8 +1,8 @@
-# 📌 AirflowTFX: Reproducible ML Pipeline Orchestration with TensorFlow Extended (TFX)
-
 <p align="center">
   <img src="imgs/AirflowTFX.png" alt="AirflowTFX" width="300">
 </p>
+
+# 📌 AirflowTFX: Reproducible ML Pipeline Orchestration with TensorFlow Extended (TFX)
 
 > End-to-end machine learning pipeline built with TFX and orchestrated via Apache Airflow, demonstrating automated, reproducible ML workflows using a real-world dataset.
 
