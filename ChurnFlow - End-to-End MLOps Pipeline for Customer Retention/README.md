@@ -45,6 +45,7 @@ This pipeline significantly reduced the time-to-deployment and maintenance overh
 ┣ 📂 mlruns                                    # MLflow experiment tracking 
 ┣ 📂 models                                    # Saved model versions (.pkl files) 
 ┣ 📂 tests                                     # Unit & integration tests 
+┣ 📂 imgs
 ┣ 📜 app.py                                    # FastAPI prediction service 
 ┣ 📜 data_ingestion.py                         # Data ingestion script 
 ┣ 📜 feature_engineering.py                    # Feature engineering pipeline 
