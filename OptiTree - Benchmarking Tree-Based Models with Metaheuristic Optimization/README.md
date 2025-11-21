@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/OptiTree.png" alt="OT" width="300">
+</p>
+
 # 📌 OptiTree: Benchmarking Tree-Based Models with Metaheuristic Optimization
 > A high-performance framework for benchmarking and optimizing tree-based machine learning models using Particle Swarm Optimization (PSO), enabling efficient hyperparameter tuning and experiment tracking for structured classification tasks.
 
