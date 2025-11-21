@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/Product Purchase Predictions.png" alt="PPP" width="300">
+</p>
+
 # 📌 Product Purchase Predictions: Machine Learning for Retail Demand
 > A sequence-modeling pipeline that forecasts **per-product daily purchases** using a **CNN+LSTM** architecture over lagged and calendar features—built with PyTorch for scalable, multi-output regression.
 
