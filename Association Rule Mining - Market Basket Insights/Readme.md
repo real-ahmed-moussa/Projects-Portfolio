@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/Association Rule Mining.png" alt="ARM" width="300">
+  <img src="imgs/ARM.png" alt="ARM" width="300">
 </p>
 
 # 📌 Association Rule Mining: Market Basket Insights
