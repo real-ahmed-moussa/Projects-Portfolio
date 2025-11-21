@@ -1,8 +1,8 @@
-# 🌾 AgriGrain: Multiclass Classification of Grain Types Using Ensemble and Neural Models
-
 <p align="center">
   <img src="imgs/AgriGrain.png" alt="AgriGrain" width="300">
 </p>
+
+# 🌾 AgriGrain: Multiclass Classification of Grain Types Using Ensemble and Neural Models
 
 > ML-based solution to classify various grain types based on geometric features, enabling automation in agricultural quality control and grain sorting processes.
 
