@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="imgs/KubeTFX.png" alt="KTFX" width="300">
+</p>
+
 # 📌 KubeTFX: Scalable ML Pipeline Orchestration with TensorFlow Extended and Kubeflow
 > End-to-end machine learning pipeline built with TFX and orchestrated via Kubeflow Pipelines on a local Minikube Kubernetes cluster, demonstrating cloud-native, scalable ML workflows.
 
