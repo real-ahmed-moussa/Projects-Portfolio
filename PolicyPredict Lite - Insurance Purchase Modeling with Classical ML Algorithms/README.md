@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/Policy Predict Lite.png" alt="PPL" width="300">
+  <img src="imgs/Policy Predict Lite.png" alt="PPL" width="500">
 </p>
 
 # 📌 PolicyPredict Lite: Insurance Purchase Modeling with Classical ML Algorithms

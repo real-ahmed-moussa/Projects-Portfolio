@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/DeepVision.png" alt="DV" width="300">
+  <img src="imgs/DeepVision.png" alt="DV" width="500">
 </p>
 
 # 📌 DeepVision: Video Analysis

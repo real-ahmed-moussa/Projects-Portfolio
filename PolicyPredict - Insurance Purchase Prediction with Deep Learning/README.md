@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/Policy Predict.png" alt="PP" width="300">
+  <img src="imgs/Policy Predict.png" alt="PP" width="500">
 </p>
 
 # 📌 PolicyPredict: Insurance Purchase Prediction with Deep Learning

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/KubeTFX.png" alt="KTFX" width="300">
+  <img src="imgs/KubeTFX.png" alt="KTFX" width="500">
 </p>
 
 # 📌 KubeTFX: Scalable ML Pipeline Orchestration with TensorFlow Extended and Kubeflow

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/ChurnFlow.png" alt="CF" width="300">
+  <img src="imgs/ChurnFlow.png" alt="CF" width="500">
 </p>
 
 # 📌 ChurnFlow: End-to-End MLOps Pipeline for Customer Retention

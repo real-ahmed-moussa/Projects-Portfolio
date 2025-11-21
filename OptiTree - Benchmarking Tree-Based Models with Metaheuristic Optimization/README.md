@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/OptiTree.png" alt="OT" width="300">
+  <img src="imgs/OptiTree.png" alt="OT" width="500">
 </p>
 
 # 📌 OptiTree: Benchmarking Tree-Based Models with Metaheuristic Optimization

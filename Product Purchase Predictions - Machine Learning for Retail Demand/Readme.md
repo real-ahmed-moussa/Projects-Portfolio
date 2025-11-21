@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/Product Purchase Predictions.png" alt="PPP" width="300">
+  <img src="imgs/Product Purchase Predictions.png" alt="PPP" width="500">
 </p>
 
 # 📌 Product Purchase Predictions: Machine Learning for Retail Demand
