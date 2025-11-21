@@ -40,7 +40,9 @@ This implementation can be used to:
 
 ## Original Transformer Architecture
 Figure is from the original ***Attention Is All You Need*** paper (see the references).
-![Original Transformer Architecture](imgs/Original_Transformer_Arch.png)
+<p align="center">
+  <img src="imgs/Original_Transformer_Arch.png" alt="Original Transformer Architecture" width="500">
+</p>
 
 
 ## 📂 Project Structure
