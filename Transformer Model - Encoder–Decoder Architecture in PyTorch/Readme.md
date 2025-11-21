@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="imgs/Transformer Model.png" alt="TM" width="500">
+  <img src="imgs/TM.png" alt="TM" width="500">
 </p>
 
 # 📌 Transformer Model: Encoder–Decoder Architecture in PyTorch
