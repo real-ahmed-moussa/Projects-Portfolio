@@ -40,7 +40,7 @@ A curated collection of my machine learning and AI projects. Each project demons
 ---
 
 ## 📝 License
-This project is shared for portfolio purposes only and may not be used for commercial purposes without permission.
+All projects in this portfolio may not be used for commercial purposes without permission.
 
 This project is licensed under the **MIT License**.  
 © 2025 **Dr. Ahmed Moussa**
