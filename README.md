@@ -4,7 +4,7 @@ A curated collection of my machine learning and AI projects. Each project demons
  > ⚠️ Only non-confidential projects are included.
 
 <p align="center">
-  <img src="port_map.png" alt="port_map">
+  <img src="portfolio_map.png" alt="portfolio_map">
 </p>
 
 ## 🗂️ Projects Overview
@@ -12,8 +12,8 @@ A curated collection of my machine learning and AI projects. Each project demons
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------- |
 | **Hyperparameter Optimizer (Python Package)**            | Python package for automated hyperparameter tuning using metaheuristic algorithms (Particle Swarms [PSO] & Pattern Search [PS]) with seamless scikit-learn integration. | `Python`, `scikit-learn`, `PSO`, `PS`                              | [🔗 Code](https://github.com/real-ahmed-moussa/hyperparameter_optimizer) |
 | **TFX Component - Multi-output Evaluator (Python Package)**            | A lightweight and flexible TFX component for evaluating multi-output TensorFlow models. It computes per-output and global metrics and writes a TFMA-compatible JSON artifact for downstream analysis and reporting. | `Tensorflow`, `TFX`                              | [🔗 Code](https://github.com/real-ahmed-moussa/tfx-multioutput-evaluator) |
-| **Grax (Python Package)**            | A lightweight Python library for transforming geospatial shapefiles into machine-learning-ready graph networks using NetworkX. | `fiona`, `numpy`, `shapely`                              | [🔗 Code](https://github.com/real-ahmed-moussa/grax) |
-| **RAG-App**            | A small, production-style Retrieval-Augmented Generation (RAG) system that ingests PDF reports, indexes them with BM25 & vector search, and serves answers via a FastAPI endpoint. | `FAISS`, `BM25`, `PyPDF`, `FastAPI`, `Uvicorn`, `OpenAI API` | [🔗 Code](https://github.com/real-ahmed-moussa/rag_app) |
+| **GRAX (Python Package)**            | A lightweight Python library for transforming geospatial shapefiles into machine-learning-ready graph networks using NetworkX. | `fiona`, `numpy`, `shapely`                              | [🔗 Code](https://github.com/real-ahmed-moussa/grax) |
+| **RAG-App: Retrieval-Augmented Question Answering over PDFs**            | A small, production-style Retrieval-Augmented Generation (RAG) system that ingests PDF reports, indexes them with BM25 & vector search, and serves answers via a FastAPI endpoint. | `FAISS`, `BM25`, `PyPDF`, `FastAPI`, `Uvicorn`, `OpenAI API` | [🔗 Code](https://github.com/real-ahmed-moussa/rag_app) |
 | **Transformer Model: Encoder–Decoder Architecture in PyTorch**      | Implementation of the Transformer architecture from scratch using PyTorch.   | `PyTorch`, `Lightning`                                   | [🔗 Code](https://github.com/real-ahmed-moussa/Transformer)               |
 | **DeepVision: Video Analysis**                           | ConvLSTM-based video classification model for automated video content analysis, improving real-time decision-making in video-heavy workflows.   | `TensorFlow`, `OpenCV`, `CNN`, `LSTM`                                          | [🔗 Code](https://github.com/real-ahmed-moussa/DeepVision)               |
 | **Product Purchase Predictions: Machine Learning for Retail Demand**                           | A sequence-modeling pipeline that forecasts per-product daily purchases using a CNN+LSTM architecture over lagged and calendar features—built with PyTorch for scalable, multi-output regression.   | `pandas`, `numpy`, `scikit-learn`, `pytorch`, `matplotlib`                                          | [🔗 Code](https://github.com/real-ahmed-moussa/PPP)               |
