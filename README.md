@@ -7,6 +7,8 @@ A curated collection of my machine learning and AI projects. Each project demons
   <img src="portfolio_map.png" alt="portfolio_map">
 </p>
 
+---
+
 ## 🗂️ Projects Overview
 | Project                                                  | Description                                                                                                                                   | Tech Stack                                                                     | Links                                 |
 | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------- |
@@ -25,6 +27,7 @@ A curated collection of my machine learning and AI projects. Each project demons
 | **PolicyPredict Lite: Classical ML for Insurance Sales** | Logistic Regression, Random Forest, and SVM models for fast, interpretable predictions in insurance marketing.                                  | `scikit-learn`, `pandas`, `NumPy`                                              | [🔗 Code](https://github.com/real-ahmed-moussa/PolicyPredictLite)       |
 | **Association Rule Mining: Market Basket Insights** | A retail analytics project applying association rule mining to uncover hidden product co-purchasing patterns, enabling smarter cross-selling, bundling, and promotion strategies.                                  | `scikit-learn`, `pandas`, `NumPy`, `mlxtend`                                              | [🔗 Code](https://github.com/real-ahmed-moussa/ARM)       |
 | **AgriGrain: Grain Type Classification**                 | Multiclass classification of grain types using ensemble methods and neural networks to automate agricultural quality control.                   | `R`, `pandas`, `NumPy`                                                         | [🔗 Code](https://github.com/real-ahmed-moussa/AgriGrain)                |
+---
 
 ## 📌 How to Use This Portfolio
 
@@ -33,3 +36,11 @@ A curated collection of my machine learning and AI projects. Each project demons
       - Source code, data (where allowed), and supporting files.
  2. Follow setup instructions in each project folder.
  3. Projects are ready to clone and run locally or in Dockerized environments (where specified).
+
+---
+
+## 📝 License
+All projects in this portfolio may not be used for commercial purposes without permission.
+
+This project is licensed under the **MIT License**.  
+© 2025 **Dr. Ahmed Moussa**
